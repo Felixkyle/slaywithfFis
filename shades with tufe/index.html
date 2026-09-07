@@ -1,0 +1,2067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slaywithfis — Gold-toned jewelry, accessories &amp; shades</title>
+<meta name="description" content="Slaywithfis — rings, necklaces, earrings, bracelets and shades. Giving your appearance the unique look. Order on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0d0a0d;
+    --charcoal:#1a1519;
+    --charcoal-2:#231b21;
+    --ivory:#f6eee3;
+    --ivory-dim:#cabdc7;
+    --champagne:#c9a769;
+    --champagne-2:#e9d3a3;
+    --pink:#e23f8f;
+    --pink-2:#ff6bb0;
+    --bronze:#a8703f;
+    --bronze-2:#d4996a;
+    --line: rgba(246,238,227,0.13);
+    --maxw: 1240px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--void);
+    color:var(--ivory);
+    font-family:'Space Grotesk', sans-serif;
+    overflow-x:hidden;
+  }
+  ::selection{ background:var(--pink); color:var(--ivory); }
+
+  h1,h2,h3,.serif{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+  }
+  a{ color:inherit; text-decoration:none; }
+  img{ display:block; max-width:100%; }
+  button{ font-family:inherit; cursor:pointer; border:none; background:none; color:inherit; }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 32px; }
+  @media (max-width:640px){ .wrap{ padding:0 20px; } }
+
+  /* ============ scrollbar ============ */
+  ::-webkit-scrollbar{ width:10px; }
+  ::-webkit-scrollbar-track{ background:var(--void); }
+  ::-webkit-scrollbar-thumb{ background:#332a30; border-radius:6px; }
+
+  /* ============ cursor sparkle trail ============ */
+  .cursor-spark{
+    position:fixed; z-index:950; pointer-events:none; border-radius:50%;
+    animation:cursorFade .6s ease-out forwards;
+  }
+  @keyframes cursorFade{
+    0%{ opacity:.85; transform:scale(1); }
+    100%{ opacity:0; transform:scale(0.2) translateY(14px); }
+  }
+
+  /* ============ preloader ============ */
+  #preloader{
+    position:fixed; inset:0; background:var(--void); z-index:10000;
+    display:flex; align-items:center; justify-content:center;
+    transition:opacity .8s ease, visibility .8s ease;
+  }
+  #preloader.done{ opacity:0; visibility:hidden; }
+  .pre-mark{ display:flex; flex-direction:column; align-items:center; gap:14px; }
+  .pre-mark svg{ width:56px; height:56px; opacity:0; animation:preIn 1s ease forwards .1s; }
+  .pre-word{ font-family:'Fraunces',serif; letter-spacing:.35em; font-size:12px; color:var(--ivory-dim); opacity:0; animation:preIn 1s ease forwards .4s; }
+  @keyframes preIn{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+
+  /* ============ nav ============ */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:500;
+    padding:22px 0;
+    transition:background .4s ease, padding .4s ease, border-color .4s ease;
+    border-bottom:1px solid transparent;
+  }
+  header.scrolled{
+    background:rgba(13,10,13,0.86);
+    backdrop-filter:blur(14px);
+    padding:14px 0;
+    border-color:var(--line);
+  }
+  nav.wrap{ display:flex; align-items:center; justify-content:space-between; gap:20px; }
+  /* FIX: flex items refuse to shrink below their own content size unless
+     min-width is explicitly relaxed. Without this, on narrow phones the
+     logo + page-toggle + cart icon + hamburger row simply overflows its
+     container instead of shrinking, and because body has overflow-x:hidden
+     that overflow is invisible and unreachable — usually clipping the
+     hamburger (the last item in the row) off-screen entirely. */
+  .logo, .nav-links, .nav-right{ min-width:0; }
+  .logo{ display:flex; align-items:center; gap:10px; }
+  .logo svg{ width:30px; height:30px; }
+  .logo-word{ font-family:'Fraunces',serif; font-size:17px; letter-spacing:.16em; font-weight:600; }
+
+  .nav-links{ display:flex; align-items:center; gap:6px; font-size:14px; color:var(--ivory-dim); position:relative; }
+  .page-toggle{
+    display:flex; align-items:center; gap:2px; background:var(--charcoal-2);
+    border:1px solid var(--line); border-radius:30px; padding:4px; position:relative;
+  }
+  .page-toggle a{
+    position:relative; z-index:2; padding:8px 18px; border-radius:24px; font-size:13.5px;
+    color:var(--ivory-dim); transition:color .35s ease;
+  }
+  .page-toggle a.active{ color:var(--void); }
+  .page-toggle .glider{
+    position:absolute; top:4px; left:4px; height:calc(100% - 8px); width:calc(50% - 4px);
+    background:var(--champagne-2); border-radius:24px; z-index:1;
+    transition:transform .4s cubic-bezier(.3,1,.3,1);
+  }
+  .page-toggle.on-shades .glider{ transform:translateX(100%); }
+
+  .nav-anchors{ display:flex; gap:26px; margin-left:22px; }
+  .nav-anchors a{ position:relative; padding:4px 0; transition:color .3s ease; }
+  .nav-anchors a:hover{ color:var(--ivory); }
+  .nav-anchors a::after{
+    content:''; position:absolute; left:0; bottom:0; height:1px; width:0;
+    background:var(--pink); transition:width .35s ease;
+  }
+  .nav-anchors a:hover::after{ width:100%; }
+
+  .nav-right{ display:flex; align-items:center; gap:16px; }
+  .nav-cta{
+    font-size:13px; padding:11px 20px; border:1px solid var(--champagne);
+    border-radius:40px; color:var(--champagne-2); white-space:nowrap;
+    transition:background .3s ease, color .3s ease;
+  }
+  .nav-cta:hover{ background:var(--champagne); color:var(--void); }
+  .cart-btn{
+    position:relative; width:42px; height:42px; border-radius:50%;
+    border:1px solid var(--line); display:flex; align-items:center; justify-content:center;
+    transition:border-color .3s ease, transform .2s ease;
+    flex-shrink:0;
+  }
+  .cart-btn:hover{ border-color:var(--pink); }
+  .cart-btn svg{ width:18px; height:18px; }
+  .cart-count{
+    position:absolute; top:-6px; right:-6px; background:var(--pink); color:#fff;
+    font-size:10.5px; font-weight:700; width:19px; height:19px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; transform:scale(0);
+    transition:transform .3s cubic-bezier(.3,1.4,.4,1);
+  }
+  .cart-count.show{ transform:scale(1); }
+
+  /* ============ hamburger button ============ */
+  .burger{
+    display:none;
+    align-items:center; justify-content:center; gap:8px;
+    font-size:13px; color:var(--ivory-dim); border:1px solid var(--line);
+    padding:9px 16px; border-radius:30px; flex-shrink:0;
+    transition:border-color .3s ease, color .3s ease;
+  }
+  .burger:hover{ border-color:var(--pink); color:var(--ivory); }
+  .burger-icon{ position:relative; width:15px; height:11px; flex-shrink:0; }
+  .burger-icon span{
+    position:absolute; left:0; right:0; height:1.5px; background:currentColor;
+    border-radius:2px; transition:transform .3s ease, opacity .3s ease, top .3s ease;
+  }
+  .burger-icon span:nth-child(1){ top:0; }
+  .burger-icon span:nth-child(2){ top:50%; margin-top:-0.75px; }
+  .burger-icon span:nth-child(3){ top:100%; margin-top:-1.5px; }
+  .burger.is-open .burger-icon span:nth-child(1){ top:50%; margin-top:-0.75px; transform:rotate(45deg); }
+  .burger.is-open .burger-icon span:nth-child(2){ opacity:0; transform:scaleX(0); }
+  .burger.is-open .burger-icon span:nth-child(3){ top:50%; margin-top:-0.75px; transform:rotate(-45deg); }
+
+  @media (max-width:900px){
+    .nav-anchors{ display:none; }
+    .burger{ display:flex; }
+  }
+  @media (max-width:600px){
+    .page-toggle a{ padding:8px 12px; font-size:12.5px; }
+  }
+  @media (max-width:900px){
+    /* FIX: previously this only hid the header's "Chat on WhatsApp"
+       pill below 420px, while the hamburger already appears below
+       900px. That left a 421px-900px gap (many phones in landscape,
+       small tablets, narrow windows) where the logo + page-toggle +
+       cart icon + this CTA + the hamburger all had to fit in one
+       non-wrapping row — they didn't, the row overflowed, and since
+       body has overflow-x:hidden the overflow (usually the hamburger
+       itself) was silently clipped off-screen instead of scrollable,
+       making the menu button effectively vanish on those widths.
+       Hiding this CTA at the same breakpoint the hamburger appears
+       removes the collision entirely. The WhatsApp CTA is still
+       reachable via the floating WhatsApp button and via its own
+       button inside the mobile menu, so nothing is lost. */
+    .nav-cta{ display:none; }
+  }
+  @media (max-width:480px){
+    /* FIX: on genuinely narrow phones (Tecno Pop 10 and similar,
+       ~360px CSS width) the header row — logo + page-toggle + cart
+       icon + hamburger — still doesn't fit even with the WhatsApp CTA
+       gone above. Trim it down: drop the text riding alongside the
+       logo icon and the hamburger icon (icon-only hamburgers are a
+       completely standard, still fully tappable pattern), and tighten
+       paddings/gaps so the row's total width comfortably clears even
+       a 320px screen instead of overflowing and getting clipped by
+       body's overflow-x:hidden. */
+    header nav.wrap{ padding:0 14px; gap:8px; }
+    .logo-word{ display:none; }
+    .logo svg{ width:26px; height:26px; }
+    .page-toggle{ padding:3px; }
+    .page-toggle a{ padding:6px 10px; font-size:11.5px; }
+    .cart-btn{ width:36px; height:36px; }
+    .cart-btn svg{ width:16px; height:16px; }
+    .nav-right{ gap:10px; }
+    .burger{ padding:8px 10px; gap:0; }
+    .burger .burger-label{ display:none; }
+  }
+
+  /* ============ mobile menu overlay ============
+     Opening it hides the rest of the page's scroll (body-lock) and
+     covers the viewport, so it truly replaces content rather than
+     floating on top of a still-scrollable page. */
+  body.menu-open{ overflow:hidden; }
+  #mobile-menu{
+    position:fixed; inset:0; z-index:600;
+    background:var(--void);
+    display:flex; flex-direction:column;
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .4s ease, visibility .4s ease;
+  }
+  #mobile-menu.open{ opacity:1; visibility:visible; pointer-events:auto; }
+  .mm-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 20px; border-bottom:1px solid var(--line);
+  }
+  .mm-close{
+    width:42px; height:42px; border-radius:50%; border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    transition:border-color .3s ease, transform .3s ease;
+  }
+  .mm-close:hover{ border-color:var(--pink); transform:rotate(90deg); }
+  .mm-close svg{ width:18px; height:18px; }
+  .mm-body{ flex:1; overflow-y:auto; padding:34px 20px 40px; }
+  .mm-toggle{
+    display:flex; align-items:center; gap:2px; background:var(--charcoal-2);
+    border:1px solid var(--line); border-radius:30px; padding:4px; position:relative;
+    max-width:320px; margin-bottom:44px;
+  }
+  .mm-toggle a{
+    flex:1; text-align:center; position:relative; z-index:2; padding:12px 10px;
+    border-radius:24px; font-size:14.5px; color:var(--ivory-dim); transition:color .35s ease;
+  }
+  .mm-toggle a.active{ color:var(--void); }
+  .mm-toggle .glider{
+    position:absolute; top:4px; left:4px; height:calc(100% - 8px); width:calc(50% - 4px);
+    background:var(--champagne-2); border-radius:24px; z-index:1;
+    transition:transform .4s cubic-bezier(.3,1,.3,1);
+  }
+  .mm-toggle.on-shades .glider{ transform:translateX(100%); }
+  .mm-links{ display:flex; flex-direction:column; }
+  .mm-links a{
+    font-family:'Fraunces',serif; font-size:clamp(30px,9vw,42px); font-weight:500;
+    color:var(--ivory); padding:16px 0; border-bottom:1px solid var(--line);
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .mm-links a svg{ width:20px; height:20px; opacity:.5; flex-shrink:0; }
+  .mm-foot{ margin-top:40px; display:flex; flex-direction:column; gap:14px; }
+  .mm-foot .btn{ width:100%; justify-content:center; }
+  .mm-social{ display:flex; gap:18px; margin-top:8px; }
+  .mm-social a{
+    width:44px; height:44px; border-radius:50%; border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .mm-social a svg{ width:18px; height:18px; color:var(--ivory-dim); }
+
+  /* ============ page fade transition ============ */
+  .page-view{ display:block; }
+  .page-view[hidden]{ display:none; }
+  .page-fade-out{ animation:pageFadeOut .28s ease forwards; }
+  .page-fade-in{ animation:pageFadeIn .45s ease forwards; }
+  @keyframes pageFadeOut{ from{opacity:1; transform:translateY(0);} to{opacity:0; transform:translateY(10px);} }
+  @keyframes pageFadeIn{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+
+  /* ============ hero (shared styles, two instances) ============ */
+  .hero{
+    position:relative; min-height:100vh; display:flex; align-items:center;
+    overflow:hidden;
+  }
+  #hero-jewelry{
+    background:
+      radial-gradient(ellipse 70% 55% at 78% 28%, rgba(226,63,143,0.14), transparent 60%),
+      radial-gradient(ellipse 60% 60% at 10% 85%, rgba(201,167,105,0.14), transparent 60%),
+      var(--void);
+  }
+  #hero-shades{
+    background:
+      radial-gradient(ellipse 70% 55% at 20% 30%, rgba(201,167,105,0.16), transparent 60%),
+      radial-gradient(ellipse 60% 60% at 85% 80%, rgba(226,63,143,0.13), transparent 60%),
+      var(--void);
+  }
+  .hero-canvas{ position:absolute; inset:0; z-index:1; opacity:0.97; }
+  .hero-inner{ position:relative; z-index:3; padding-top:70px; width:100%; }
+  .hero-eyebrow{
+    display:flex; align-items:center; gap:10px;
+    font-size:12.5px; color:var(--champagne-2); letter-spacing:.14em; margin-bottom:26px;
+  }
+  .hero-eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--pink); box-shadow:0 0 0 4px rgba(226,63,143,.18); }
+  .hero-inner h1{
+    font-size:clamp(42px, 7.4vw, 96px);
+    max-width:820px;
+    color:var(--ivory);
+  }
+  .hero-inner h1 em{ font-style:italic; color:var(--champagne-2); font-weight:400; }
+  .hero-sub{
+    max-width:460px; margin-top:26px; font-size:16.5px; line-height:1.65; color:var(--ivory-dim);
+  }
+  .hero-actions{ display:flex; gap:18px; margin-top:42px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:16px 30px; border-radius:40px; font-size:14.5px; font-weight:500;
+    transition:transform .35s ease, background .35s ease, color .35s ease, border-color .35s ease, box-shadow .35s ease;
+  }
+  .btn-solid{ background:var(--pink); color:#fff; box-shadow:0 8px 24px rgba(226,63,143,0.25); }
+  .btn-solid:hover{ background:var(--pink-2); transform:translateY(-2px); }
+  .btn-gold{ background:var(--champagne-2); color:var(--void); }
+  .btn-gold:hover{ background:var(--ivory); }
+  .btn-outline{ border:1px solid rgba(246,238,227,0.35); color:var(--ivory); }
+  .btn-outline:hover{ border-color:var(--pink); color:var(--pink-2); }
+
+  .scroll-cue{
+    position:absolute; bottom:38px; left:32px; z-index:3;
+    display:flex; align-items:center; gap:12px; font-size:11.5px; letter-spacing:.16em; color:var(--ivory-dim);
+  }
+  .scroll-cue .line{ width:34px; height:1px; background:var(--ivory-dim); position:relative; overflow:hidden; }
+  .scroll-cue .line::after{
+    content:''; position:absolute; left:-100%; top:0; width:100%; height:100%; background:var(--pink);
+    animation:cueMove 2.2s ease-in-out infinite;
+  }
+  @keyframes cueMove{ 0%{left:-100%;} 50%{left:0;} 100%{left:100%;} }
+  @media (max-width:640px){
+    .hero{ min-height:100svh; }
+    .hero-inner{ padding-top:100px; }
+    .scroll-cue{ left:20px; bottom:22px; }
+    .hero-actions .btn{ flex:1 1 auto; justify-content:center; }
+  }
+
+  /* ============ marquee ============ */
+  .marquee-band{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--charcoal); overflow:hidden; padding:16px 0; position:relative; z-index:20;
+  }
+  .marquee-track{ display:flex; width:max-content; animation:scrollMarq 26s linear infinite; }
+  .marquee-band:hover .marquee-track{ animation-play-state:paused; }
+  .marquee-track span{
+    font-family:'Fraunces', serif; font-style:italic; font-size:16px; color:var(--ivory-dim);
+    padding:0 26px; white-space:nowrap; display:flex; align-items:center; gap:26px;
+  }
+  .marquee-track span b{ color:var(--pink-2); font-style:normal; font-weight:600; }
+  @keyframes scrollMarq{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ============ generic section ============ */
+  section{ padding:130px 0; position:relative; z-index:1; }
+  .section-head{ max-width:600px; margin-bottom:56px; }
+  .eyebrow{ font-size:12.5px; letter-spacing:.16em; color:var(--pink-2); margin-bottom:18px; display:block; }
+  .section-head h2{ font-size:clamp(30px,4vw,48px); color:var(--ivory); }
+  .section-head p{ margin-top:18px; color:var(--ivory-dim); font-size:15.5px; line-height:1.7; max-width:480px; }
+  @media (max-width:640px){
+    section{ padding:80px 0; }
+    .section-head{ margin-bottom:40px; }
+  }
+
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity .9s cubic-bezier(.2,.7,.3,1), transform .9s cubic-bezier(.2,.7,.3,1); }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+
+  /* ============ manifesto ============ */
+  #manifesto{ background:var(--charcoal); }
+  .manifesto-grid{ display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
+  .manifesto-grid blockquote{
+    font-family:'Fraunces',serif; font-size:clamp(26px,3.4vw,40px); font-style:italic; line-height:1.32; color:var(--ivory);
+  }
+  .manifesto-grid blockquote span{ color:var(--pink-2); }
+  .manifesto-side p{ color:var(--ivory-dim); font-size:15.5px; line-height:1.8; margin-bottom:20px; }
+  .manifesto-side .sig{ font-family:'Fraunces',serif; font-style:italic; color:var(--champagne-2); font-size:18px; margin-top:8px; }
+  @media (max-width:860px){ .manifesto-grid{ grid-template-columns:1fr; gap:36px; } }
+
+  /* ============ stats ============ */
+  .stats-row{ display:flex; gap:60px; margin-top:70px; flex-wrap:wrap; }
+  .stat b{ font-family:'Fraunces',serif; font-size:clamp(34px,4.6vw,54px); color:var(--champagne-2); display:block; font-weight:500; }
+  .stat span{ font-size:13px; color:var(--ivory-dim); letter-spacing:.04em; }
+  @media (max-width:560px){
+    .stats-row{ gap:32px 40px; margin-top:48px; }
+  }
+  @media (max-width:400px){
+    .stats-row{ gap:28px; justify-content:space-between; }
+    .stat{ flex:1 1 40%; }
+  }
+
+  /* ============ filter tabs ============ */
+  .filter-tabs{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:40px; }
+  .ftab{
+    font-size:13px; padding:10px 20px; border-radius:30px; border:1px solid var(--line); color:var(--ivory-dim);
+    transition:all .3s ease;
+  }
+  .ftab:hover{ border-color:var(--pink); color:var(--ivory); }
+  .ftab.active{ background:var(--ivory); color:var(--void); border-color:var(--ivory); }
+  @media (max-width:560px){
+    .filter-tabs{ flex-wrap:nowrap; overflow-x:auto; padding-bottom:6px; margin-bottom:28px; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+    .filter-tabs::-webkit-scrollbar{ display:none; }
+    .ftab{ white-space:nowrap; flex-shrink:0; }
+  }
+
+  /* ============ collections ============ */
+  .coll-grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:22px; }
+  .coll-card{
+    position:relative; border-radius:6px; overflow:hidden; background:var(--charcoal);
+    border:1px solid var(--line);
+    perspective:900px;
+    transition:opacity .45s ease, transform .45s ease;
+  }
+  .coll-card.hide{ opacity:0; transform:scale(0.92); pointer-events:none; position:absolute; }
+  .coll-card .tilt-inner{ transition:transform .25s ease; transform-style:preserve-3d; }
+  .card-lg{ grid-column:span 3; grid-row:span 2; }
+  .card-md{ grid-column:span 3; grid-row:span 2; }
+  .card-sm{ grid-column:span 2; grid-row:span 1;}
+  @media (max-width:960px){
+    .coll-grid{ grid-template-columns:repeat(2,1fr); }
+    .card-lg,.card-md{ grid-column:span 2; }
+    .card-sm{ grid-column:span 1; }
+  }
+  @media (max-width:560px){
+    .coll-grid{ grid-template-columns:1fr; gap:18px; }
+    .card-lg,.card-md,.card-sm{ grid-column:span 1; }
+    .coll-card .tilt-inner{ transform:none !important; }
+    .card-sm .media-box{ aspect-ratio:4/5; }
+  }
+
+  .media-box{ position:relative; width:100%; aspect-ratio:4/5; overflow:hidden; background:linear-gradient(135deg,#251d22,#160f14); }
+  .card-sm .media-box{ aspect-ratio:1/1; }
+  .media-box img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    transition:opacity .55s ease, transform .8s ease, filter .55s ease;
+  }
+  .media-box img.base{ opacity:1; }
+  .media-box img.swap{ opacity:0; transform:scale(1.06); }
+  .coll-card:hover .media-box img.base{ opacity:0; }
+  .coll-card:hover .media-box img.swap{ opacity:1; transform:scale(1.0); filter:brightness(1.08) saturate(1.08); }
+  .coll-card:hover .media-box img{ transform:scale(1.0); }
+  /* fallback: if the "worn" shot fails to load, keep showing the product photo with a gentle zoom instead of a blank/black swap */
+  .coll-card.no-swap:hover .media-box img.swap{ opacity:0 !important; }
+  .coll-card.no-swap:hover .media-box img.base{ opacity:1 !important; transform:scale(1.05); }
+  /* lighter gradient so the "worn" photo actually reads on hover, not a dark-out */
+  .media-box::after{
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(180deg, rgba(13,10,13,0) 52%, rgba(13,10,13,0.82) 100%);
+    transition:opacity .45s ease;
+  }
+  .coll-card:hover .media-box::after{ opacity:.46; }
+  .worn-badge{
+    position:absolute; top:16px; right:16px; z-index:3; font-size:10.5px; letter-spacing:.08em;
+    color:var(--ivory); background:rgba(226,63,143,0.9); padding:5px 10px; border-radius:20px;
+    opacity:0; transform:translateY(-6px); transition:opacity .35s ease, transform .35s ease;
+  }
+  .coll-card:hover .worn-badge{ opacity:1; transform:translateY(0); }
+  .coll-card.no-swap .worn-badge{ display:none; }
+  /* glint sweep */
+  .media-box .glint{
+    content:''; position:absolute; top:0; left:-60%; width:40%; height:100%; z-index:2;
+    background:linear-gradient(115deg, transparent, rgba(255,255,255,0.16), transparent);
+    transform:skewX(-18deg); transition:left .75s ease; pointer-events:none;
+  }
+  .coll-card:hover .glint{ left:130%; }
+
+  .price-tag{
+    position:absolute; top:16px; left:16px; z-index:3; font-size:12px; letter-spacing:.03em;
+    background:rgba(13,10,13,0.6); backdrop-filter:blur(6px); color:var(--champagne-2);
+    padding:6px 12px; border-radius:30px; border:1px solid rgba(201,167,105,0.35);
+  }
+  .card-copy{
+    position:absolute; left:0; right:0; bottom:0; padding:20px 22px; z-index:3;
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .card-copy .txt h3{ font-size:21px; color:var(--ivory); }
+  .card-copy .txt p{ font-size:13px; color:var(--ivory-dim); margin-top:6px; max-width:250px; line-height:1.5; }
+  .card-actions{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+  .add-bag{
+    font-size:12.5px; font-weight:600; padding:10px 16px; border-radius:30px;
+    background:var(--pink); color:#fff; display:flex; align-items:center; gap:7px;
+    transition:background .25s ease, transform .15s ease;
+  }
+  .add-bag:hover{ background:var(--pink-2); }
+  .add-bag:active{ transform:scale(0.94); }
+  .add-bag svg{ width:14px; height:14px; }
+  .quick-chat{
+    font-size:12px; color:var(--ivory-dim); border-bottom:1px solid rgba(246,238,227,0.3); padding-bottom:2px;
+    transition:color .2s ease, border-color .2s ease;
+  }
+  .quick-chat:hover{ color:var(--ivory); border-color:var(--pink); }
+  @media (max-width:640px){
+    /* on touch devices hover states don't reliably fire, so always
+       show the worn badge/copy legibly and keep the gradient present */
+    .media-box::after{ opacity:.6; }
+    .card-copy .txt p{ max-width:100%; }
+  }
+
+  /* ============ shades studio (3D) ============ */
+  .studio-section{
+    background:linear-gradient(180deg, var(--void), var(--charcoal));
+    overflow:hidden;
+  }
+  .studio-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:center; }
+  .studio-copy{ position:relative; z-index:2; }
+  .studio-copy .stat-mini{ display:flex; gap:34px; margin-top:36px; flex-wrap:wrap; }
+  .studio-copy .stat-mini div b{ font-family:'Fraunces',serif; color:var(--champagne-2); font-size:26px; display:block; }
+  .studio-copy .stat-mini div span{ font-size:12px; color:var(--ivory-dim); }
+  .studio-canvas-wrap{ position:relative; height:440px; }
+  .studio-canvas-wrap canvas{ width:100%; height:100%; }
+  .studio-hint{
+    position:absolute; bottom:10px; left:50%; transform:translateX(-50%);
+    font-size:11px; letter-spacing:.12em; color:var(--ivory-dim); display:flex; align-items:center; gap:8px;
+  }
+  @media (max-width:860px){ .studio-grid{ grid-template-columns:1fr; gap:48px; } .studio-canvas-wrap{ height:320px; } }
+  @media (max-width:480px){
+    .studio-canvas-wrap{ height:260px; }
+    .studio-copy .stat-mini{ gap:24px; }
+    .studio-copy .btn{ width:100%; justify-content:center; }
+  }
+
+  /* ============ assembly progress bar (time-based, triggered when the
+     shades canvas scrolls into view — no extra scroll space needed) ============ */
+  .assemble-progress{
+    position:absolute; left:0; right:0; bottom:-2px; height:2px;
+    background:var(--line); overflow:hidden; border-radius:2px;
+  }
+  .assemble-progress-fill{ height:100%; width:0%; background:var(--bronze-2); transition:width .05s linear; }
+
+  /* ============ editorial break ============ */
+  #editorial{ min-height:78vh; position:relative; display:flex; align-items:center; overflow:hidden; padding:0; }
+  #editorial .parallax-img{
+    position:absolute; inset:-10% 0; width:100%; height:120%; object-fit:cover; z-index:0;
+    filter:brightness(0.5) saturate(1.05);
+  }
+  #editorial::before{
+    content:''; position:absolute; inset:0; z-index:1;
+    background:linear-gradient(90deg, rgba(13,10,13,0.94) 0%, rgba(13,10,13,0.55) 55%, rgba(13,10,13,0.15) 100%);
+  }
+  .editorial-copy{ position:relative; z-index:2; max-width:560px; }
+  .editorial-copy p.eyebrow{ margin-bottom:22px; }
+  .editorial-copy h2{ font-size:clamp(30px,4.4vw,52px); font-style:italic; color:var(--ivory); line-height:1.2; }
+  .editorial-copy .btn{ margin-top:34px; }
+  @media (max-width:640px){
+    #editorial{ min-height:64vh; }
+    #editorial::before{ background:linear-gradient(180deg, rgba(13,10,13,0.55) 0%, rgba(13,10,13,0.94) 75%); }
+    .editorial-copy{ max-width:100%; }
+    .editorial-copy .btn{ width:100%; justify-content:center; }
+  }
+
+  /* ============ how to order ============ */
+  #howto{ background:var(--charcoal); }
+  .howto-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-top:10px; }
+  .howto-step{ border-top:1px solid var(--line); padding-top:26px; }
+  .howto-step .num{ font-family:'Fraunces',serif; font-style:italic; font-size:34px; color:var(--pink-2); margin-bottom:16px; display:block; }
+  .howto-step h3{ font-size:19px; color:var(--ivory); margin-bottom:10px; font-family:'Fraunces',serif; font-weight:500;}
+  .howto-step p{ font-size:14.5px; color:var(--ivory-dim); line-height:1.7; }
+  @media (max-width:760px){ .howto-grid{ grid-template-columns:1fr; gap:30px; } }
+
+  /* ============ social strip ============ */
+  #social{ text-align:center; }
+  .social-cards{ display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:20px; }
+  .social-card{
+    border:1px solid var(--line); border-radius:8px; padding:40px 34px; text-align:left;
+    display:flex; flex-direction:column; gap:16px; transition:border-color .3s ease, transform .3s ease;
+  }
+  .social-card:hover{ border-color:var(--pink); transform:translateY(-4px); }
+  .social-card .plat{ display:flex; align-items:center; gap:12px; font-size:15px; color:var(--ivory); }
+  .social-card .plat svg{ width:22px; height:22px; color:var(--pink-2); }
+  .social-card .handle{ font-family:'Fraunces',serif; font-style:italic; font-size:22px; color:var(--champagne-2); }
+  .social-card p{ font-size:14px; color:var(--ivory-dim); line-height:1.6; }
+  .social-card .go{ font-size:13px; color:var(--ivory); border-bottom:1px solid var(--pink); align-self:flex-start; padding-bottom:2px; }
+  @media (max-width:700px){ .social-cards{ grid-template-columns:1fr; } }
+  @media (max-width:480px){ .social-card{ padding:30px 22px; } }
+
+  /* ============ testimonials marquee ============ */
+  #love{ background:var(--charcoal); overflow:hidden; }
+  .love-track{ display:flex; gap:22px; width:max-content; animation:loveScroll 38s linear infinite; }
+  #love:hover .love-track{ animation-play-state:paused; }
+  @keyframes loveScroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  .love-card{ border:1px solid var(--line); border-radius:8px; padding:30px 26px; width:340px; flex-shrink:0; background:var(--void); }
+  .love-card p{ font-family:'Fraunces',serif; font-style:italic; font-size:17px; line-height:1.55; color:var(--ivory); }
+  .love-card .who{ margin-top:20px; font-size:13px; color:var(--ivory-dim); letter-spacing:.03em; }
+  @media (max-width:480px){ .love-card{ width:78vw; padding:24px 20px; } }
+
+  /* ============ contact / cta ============ */
+  #contact{
+    text-align:center;
+    background:
+      radial-gradient(ellipse 60% 80% at 50% 0%, rgba(226,63,143,0.12), transparent 60%),
+      var(--void);
+  }
+  #contact h2{ font-size:clamp(34px,5.4vw,64px); max-width:720px; margin:0 auto; color:var(--ivory); }
+  #contact h2 em{ color:var(--champagne-2); font-style:italic; }
+  #contact p{ color:var(--ivory-dim); margin:24px auto 40px; max-width:480px; font-size:15.5px; line-height:1.7; }
+  @media (max-width:480px){ #contact .btn{ width:100%; justify-content:center; } }
+
+  /* ============ footer ============ */
+  footer{ border-top:1px solid var(--line); padding:70px 0 34px; position:relative; z-index:1; }
+  .foot-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; }
+  .foot-brand .logo{ margin-bottom:16px; }
+  .foot-brand p{ color:var(--ivory-dim); font-size:14px; line-height:1.7; max-width:280px; }
+  .foot-col h4{ font-size:12.5px; letter-spacing:.12em; color:var(--pink-2); margin-bottom:18px; }
+  .foot-col a{ display:block; font-size:14px; color:var(--ivory-dim); margin-bottom:12px; transition:color .3s ease; }
+  .foot-col a:hover{ color:var(--ivory); }
+  .foot-bottom{
+    margin-top:60px; padding-top:26px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px;
+    font-size:12.5px; color:var(--ivory-dim);
+  }
+  @media (max-width:760px){ .foot-grid{ grid-template-columns:1fr 1fr; gap:32px 24px; } }
+  @media (max-width:460px){
+    footer{ padding:56px 0 26px; }
+    .foot-grid{ grid-template-columns:1fr; gap:32px; }
+    .foot-bottom{ flex-direction:column; }
+  }
+
+  /* ============ whatsapp fab ============ */
+  #wa-fab{
+    position:fixed; bottom:26px; right:26px; z-index:400;
+    display:flex; align-items:center; gap:10px;
+    background:#25D366; color:#08210f; border-radius:50px;
+    padding:15px 22px; font-size:13.5px; font-weight:600;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+  }
+  #wa-fab svg{ width:19px; height:19px; }
+  #wa-fab .pulse{
+    position:absolute; inset:0; border-radius:50px; border:1px solid #25D366;
+    animation:pulse 2.2s ease-out infinite;
+  }
+  @keyframes pulse{ 0%{ transform:scale(1); opacity:.7; } 100%{ transform:scale(1.5); opacity:0; } }
+  @media (max-width:480px){
+    #wa-fab{ bottom:16px; right:16px; padding:14px; border-radius:50%; }
+    #wa-fab span:not(.pulse){ display:none; }
+  }
+
+  /* ============ activity toast — clearly labeled as a showcase, not live orders ============ */
+  #live-toast{
+    position:fixed; left:26px; bottom:26px; z-index:390;
+    background:var(--charcoal-2); border:1px solid var(--line); border-radius:10px;
+    padding:14px 18px; display:flex; align-items:center; gap:12px; max-width:290px;
+    transform:translateY(140%); transition:transform .6s cubic-bezier(.2,.8,.3,1);
+    box-shadow:0 20px 40px rgba(0,0,0,.35);
+  }
+  #live-toast.show{ transform:translateY(0); }
+  #live-toast .dotlive{ width:8px; height:8px; border-radius:50%; background:var(--champagne-2); flex-shrink:0; box-shadow:0 0 0 4px rgba(201,167,105,0.18); }
+  #live-toast .txt b{ display:block; font-size:13px; color:var(--ivory); }
+  #live-toast .txt span{ font-size:12px; color:var(--ivory-dim); }
+  #live-toast .tiny{ font-size:9.5px; letter-spacing:.06em; color:var(--ivory-dim); opacity:.65; margin-top:2px; display:block; }
+  @media (max-width:640px){ #live-toast{ display:none; } }
+
+  /* ============ cart drawer ============ */
+  #cart-overlay{
+    position:fixed; inset:0; background:rgba(13,10,13,0.6); backdrop-filter:blur(3px);
+    z-index:800; opacity:0; pointer-events:none; transition:opacity .4s ease;
+  }
+  #cart-overlay.open{ opacity:1; pointer-events:auto; }
+  #cart-drawer{
+    position:fixed; top:0; right:0; bottom:0; width:min(430px,92vw); z-index:801;
+    background:var(--charcoal); border-left:1px solid var(--line);
+    transform:translateX(100%); transition:transform .45s cubic-bezier(.2,.8,.25,1);
+    display:flex; flex-direction:column;
+    box-shadow:-20px 0 60px rgba(0,0,0,.5);
+  }
+  #cart-drawer.open{ transform:translateX(0); }
+  .cart-head{ padding:26px 26px 20px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; }
+  .cart-head h3{ font-size:20px; display:flex; align-items:center; gap:10px; }
+  .cart-head h3 svg{ width:18px; height:18px; color:var(--champagne-2); }
+  .cart-close{ width:34px; height:34px; border-radius:50%; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; transition:border-color .2s ease, transform .2s ease; }
+  .cart-close:hover{ border-color:var(--pink); transform:rotate(90deg); }
+  .cart-items{ flex:1; overflow-y:auto; padding:14px 26px; }
+  .cart-empty{ padding:60px 0; text-align:center; color:var(--ivory-dim); font-size:14px; }
+  .cart-empty svg{ width:42px; height:42px; margin:0 auto 16px; opacity:.4; }
+  .cart-group-label{ font-size:11px; letter-spacing:.1em; color:var(--champagne-2); margin:18px 0 6px; }
+  .cart-group-label:first-child{ margin-top:4px; }
+  .cart-item{
+    display:flex; gap:14px; padding:16px 0; border-bottom:1px solid var(--line);
+    animation:itemIn .35s ease;
+  }
+  @keyframes itemIn{ from{ opacity:0; transform:translateX(14px);} to{ opacity:1; transform:translateX(0);} }
+  .cart-item img{ width:64px; height:64px; object-fit:cover; border-radius:6px; flex-shrink:0; }
+  .ci-info{ flex:1; display:flex; flex-direction:column; gap:6px; }
+  .ci-info .ci-name{ font-size:14px; color:var(--ivory); }
+  .ci-info .ci-price{ font-size:13px; color:var(--champagne-2); }
+  .ci-qty{ display:flex; align-items:center; gap:10px; }
+  .ci-qty button{ width:22px; height:22px; border:1px solid var(--line); border-radius:50%; font-size:13px; display:flex; align-items:center; justify-content:center; transition:border-color .2s ease; }
+  .ci-qty button:hover{ border-color:var(--pink); }
+  .ci-remove{ font-size:11.5px; color:var(--ivory-dim); text-decoration:underline; align-self:flex-start; }
+  .ci-remove:hover{ color:var(--pink-2); }
+  .cart-foot{ padding:22px 26px 28px; border-top:1px solid var(--line); }
+  .gift-wrap-row{ display:flex; align-items:center; gap:10px; font-size:13px; color:var(--ivory-dim); margin-bottom:16px; cursor:pointer; }
+  .gift-wrap-row input{ accent-color:var(--pink); width:16px; height:16px; }
+  .cart-subtotal{ display:flex; justify-content:space-between; font-size:15px; margin-bottom:18px; }
+  .cart-subtotal b{ color:var(--champagne-2); font-family:'Fraunces',serif; font-size:19px; }
+  #checkout-btn{ width:100%; justify-content:center; }
+  .cart-note{ font-size:11.5px; color:var(--ivory-dim); text-align:center; margin-top:12px; }
+  @media (max-width:420px){
+    .cart-head{ padding:20px 18px 16px; }
+    .cart-items{ padding:10px 18px; }
+    .cart-foot{ padding:18px 18px 22px; }
+  }
+
+  /* sparkle burst */
+  .spark{
+    position:fixed; z-index:900; border-radius:50%; pointer-events:none;
+    animation:sparkOut .7s ease-out forwards;
+  }
+  @keyframes sparkOut{
+    0%{ transform:translate(0,0) scale(1); opacity:1; }
+    100%{ transform:translate(var(--sx),var(--sy)) scale(0); opacity:0; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001s !important; animation-iteration-count:1 !important; transition-duration:0.001s !important; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<div id="preloader">
+  <div class="pre-mark">
+    <svg viewBox="0 0 64 64" fill="none"><path d="M32 6 L40 18 L24 18 Z" stroke="#c9a769" stroke-width="2" stroke-linejoin="round"/><circle cx="32" cy="9" r="2.6" fill="#e9d3a3"/><path d="M14 44 V26 L22 34 L32 24 L42 34 L50 26 V44" stroke="#f6eee3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="pre-word">SLAYWITHFIS</div>
+  </div>
+</div>
+
+<header id="site-header">
+  <nav class="wrap">
+    <a href="#hero" class="logo" data-page-link="jewelry">
+      <svg viewBox="0 0 64 64" fill="none"><path d="M32 6 L40 18 L24 18 Z" stroke="#c9a769" stroke-width="2" stroke-linejoin="round"/><circle cx="32" cy="9" r="2.6" fill="#e9d3a3"/><path d="M14 44 V26 L22 34 L32 24 L42 34 L50 26 V44" stroke="#f6eee3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="logo-word">SLAYWITHFIS</span>
+    </a>
+    <div class="nav-links">
+      <div class="page-toggle" id="page-toggle">
+        <div class="glider"></div>
+        <a href="#top" data-page="jewelry" class="active">Jewelry</a>
+        <a href="#top" data-page="shades">Shades</a>
+      </div>
+      <div class="nav-anchors">
+        <a href="#howto">How to Order</a>
+        <a href="#social">Follow</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="nav-right">
+      <button class="cart-btn magnetic" id="cart-toggle" aria-label="Open bag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
+      <a href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!%20I%27d%20love%20to%20see%20your%20latest%20pieces." class="nav-cta magnetic" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      <button class="burger" id="burger-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="burger-icon"><span></span><span></span><span></span></span>
+        <span class="burger-label">Menu</span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ MOBILE MENU (full-screen, replaces content while open) ============ -->
+<div id="mobile-menu" aria-hidden="true">
+  <div class="mm-head">
+    <div class="logo">
+      <svg viewBox="0 0 64 64" fill="none"><path d="M32 6 L40 18 L24 18 Z" stroke="#c9a769" stroke-width="2" stroke-linejoin="round"/><circle cx="32" cy="9" r="2.6" fill="#e9d3a3"/><path d="M14 44 V26 L22 34 L32 24 L42 34 L50 26 V44" stroke="#f6eee3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="logo-word">SLAYWITHFIS</span>
+    </div>
+    <button class="mm-close" id="mm-close" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="mm-body">
+    <div class="mm-toggle" id="mm-page-toggle">
+      <div class="glider"></div>
+      <a href="#top" data-page="jewelry" class="active">Jewelry</a>
+      <a href="#top" data-page="shades">Shades</a>
+    </div>
+    <nav class="mm-links">
+      <a href="#howto" data-mm-anchor>How to Order
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#social" data-mm-anchor>Follow
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#contact" data-mm-anchor>Contact
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
+    </nav>
+    <div class="mm-foot">
+      <a href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!%20I%27d%20love%20to%20see%20your%20latest%20pieces." target="_blank" rel="noopener" class="btn btn-solid">Chat on WhatsApp</a>
+      <div class="mm-social">
+        <a href="https://instagram.com/slay_withfis" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        </a>
+        <a href="https://tiktok.com/@slaywithfis" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 3v11a3.5 3.5 0 1 1-3.5-3.5"/><path d="M15 3c0 2.5 2 4.5 4.5 4.5"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="top"></div>
+
+<!-- ============================================================ -->
+<!-- JEWELRY PAGE -->
+<!-- ============================================================ -->
+<div class="page-view" id="page-jewelry">
+
+  <section class="hero" id="hero-jewelry">
+    <canvas class="hero-canvas" id="hero-canvas-jewelry"></canvas>
+    <div class="wrap hero-inner">
+      <div class="hero-eyebrow"><span class="dot"></span> Imported pieces · shipped nationwide</div>
+      <h1 class="reveal in-view">Small pieces.<br><em>Serious presence.</em></h1>
+      <p class="hero-sub reveal in-view">Slaywithfis designs gold-toned rings, necklaces, earrings and bracelets for the days you refuse to blend in — handpicked, hand-finished, one DM away.</p>
+      <div class="hero-actions">
+        <a href="#collections" class="btn btn-gold magnetic">View the Collection</a>
+        <a href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!%20I%20want%20to%20place%20an%20order." target="_blank" rel="noopener" class="btn btn-outline magnetic">Order on WhatsApp</a>
+      </div>
+    </div>
+    <div class="scroll-cue"><div class="line"></div> SCROLL</div>
+  </section>
+
+  <div class="marquee-band">
+    <div class="marquee-track" id="marq">
+      <span><b>Slaywithfis</b> — Giving your appearance the unique look</span>
+      <span>@slay_withfis on Instagram</span>
+      <span>Slaywithfis on TikTok</span>
+      <span>Rings</span><span>Necklaces</span><span>Earrings</span><span>Bracelets</span><span>Shades</span>
+      <span><b>Slaywithfis</b> — Giving your appearance the unique look</span>
+      <span>@slay_withfis on Instagram</span>
+      <span>Slaywithfis on TikTok</span>
+      <span>Rings</span><span>Necklaces</span><span>Earrings</span><span>Bracelets</span><span>Shades</span>
+    </div>
+  </div>
+
+  <section id="manifesto">
+    <div class="wrap manifesto-grid">
+      <blockquote class="reveal">"Jewelry is the last decision you make before you walk out the door — <span>make it count.</span>"</blockquote>
+      <div class="manifesto-side reveal">
+        <p>We don't chase every trend that lands on the timeline. Every ring, chain and bracelet in the Slaywithfis catalogue is chosen because it holds up in real light — on your neck, your wrist, your face — not just under a ring light.</p>
+        <p>Stack the bracelets. Layer the chains. It's your look, we are aboutto give it the upgrade it deserves.</p>
+        <div class="sig">— The Slaywithfis studio</div>
+      </div>
+    </div>
+    <div class="wrap stats-row reveal">
+      <div class="stat"><b class="count" data-target="5">0</b><span>Curated collections</span></div>
+      <div class="stat"><b class="count" data-target="100">0</b><span>% hand-finished pieces</span></div>
+      <div class="stat"><b class="count" data-target="24">0</b><span>Hr WhatsApp replies</span></div>
+      <div class="stat"><b class="count" data-target="1">0</b><span>DM to place an order</span></div>
+    </div>
+  </section>
+
+  <section id="collections">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">The Collection</span>
+        <h2>Five ways to finish a look</h2>
+        <p>Hover a piece to see it worn, filter by category, or drop it straight into your bag and check out on WhatsApp.</p>
+      </div>
+
+      <div class="filter-tabs reveal" data-tabs="jewelry">
+        <button class="ftab active" data-filter="all">All</button>
+        <button class="ftab" data-filter="rings">Rings</button>
+        <button class="ftab" data-filter="necklaces">Necklaces</button>
+        <button class="ftab" data-filter="earrings">Earrings</button>
+        <button class="ftab" data-filter="bracelets">Bracelets</button>
+      </div>
+
+      <div class="coll-grid" id="coll-grid-jewelry">
+
+        <div class="coll-card card-lg tilt" data-tilt data-category="rings">
+          <div class="tilt-inner">
+            <div class="media-box">
+              <span class="price-tag">₦15,000</span>
+              <span class="worn-badge">Worn look</span>
+              <img class="base" src="https://images.unsplash.com/photo-1677466891347-2ff8dad2f993?w=700&q=68&auto=format&fit=crop" alt="Ouroboros gold ring product shot" loading="lazy" decoding="async">
+              <img class="swap" src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=700&q=68&auto=format&fit=crop" alt="Gold ring worn on hand" loading="lazy" decoding="async">
+              <span class="glint"></span>
+              <div class="card-copy">
+                <div class="txt"><h3>Ouroboros Ring</h3><p>Stacked or solo, sized to fit the story you're telling that day.</p></div>
+                <div class="card-actions">
+                  <button class="add-bag" data-id="ring-ouroboros" data-name="Ouroboros Ring" data-price="15000" data-img="https://images.unsplash.com/photo-1677466891347-2ff8dad2f993?w=200&q=80&auto=format&fit=crop">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg> Add to bag
+                  </button>
+                  <a class="quick-chat" href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!%20I%27d%20like%20to%20order%20the%20Ouroboros%20Ring." target="_blank" rel="noopener">Chat instead</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="coll-card card-md tilt" data-tilt data-category="necklaces">
+          <div class="tilt-inner">
+            <div class="media-box">
+              <span class="price-tag">₦25,000</span>
+              <span class="worn-badge">Worn look</span>
+              <img class="base" src="https://images.unsplash.com/photo-1761211106346-939cb32005d7?w=700&q=68&auto=format&fit=crop" alt="Heart pendant chain flatlay" loading="lazy" decoding="async">
+              <img class="swap" src="https://images.unsplash.com/photo-1602751584547-8c62ae5468da?w=700&q=68&auto=format&fit=crop" alt="Gold necklace worn on neck" loading="lazy" decoding="async">
+              <span class="glint"></span>
+              <div class="card-copy">
+                <div class="txt"><h3>Heart Pendant Chain</h3><p>Layer three or wear one. Either way, it catches light first.</p></div>
+                <div class="card-actions">
+                  <button class="add-bag" data-id="necklace-heart" data-name="Heart Pendant Chain" data-price="25000" data-img="https://images.unsplash.com/photo-1761211106346-939cb32005d7?w=200&q=80&auto=format&fit=crop">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg> Add to bag
+                  </button>
+                  <a class="quick-chat" href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!%20I%27d%20like%20to%20order%20the%20Heart%20Pendant%20Chain." target="_blank" rel="noopener">Chat instead</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="coll-card card-sm tilt" data-tilt data-category="earrings">
+          <div class="tilt-inner">
+            <div class="media-box">
+              <span class="price-tag">₦12,000</span>
+              <span class="worn-badge">Worn look</span>
+              <img class="base" src="https://images.unsplash.com/photo-1630019852942-f89202989a59?w=560&q=68&auto=format&fit=crop" alt="Gold hoop earrings product shot" loading="lazy" decoding="async">
+              <img class="swap" src="https://images.unsplash.com/photo-1596107034181-9f168717f1ee?w=560&q=68&auto=format&fit=crop" alt="Gold hoops worn on ear" loading="lazy" decoding="async">
+              <span class="glint"></span>
+              <div class="card-copy">
+                <div class="txt"><h3>Gold Hoops</h3><p>Hoops with weight, studs with attitude.</p></div>
+                <div class="card-actions">
+                  <button class="add-bag" data-id="earrings-hoops" data-name="Gold Hoops" data-price="12000" data-img="https://images.unsplash.com/photo-1630019852942-f89202989a59?w=200&q=80&auto=format&fit=crop">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg> Add
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="coll-card card-sm tilt" data-tilt data-category="bracelets">
+          <div class="tilt-inner">
+            <div class="media-box">
+              <span class="price-tag">₦18,000</span>
+              <span class="worn-badge">Worn look</span>
+              <img class="base" src="https://images.unsplash.com/photo-1611955167811-4711904bb9f8?w=560&q=68&auto=format&fit=crop" alt="Gold bangles product shot" loading="lazy" decoding="async">
+              <img class="swap" src="https://images.unsplash.com/photo-1583315528236-b893494a35ee?w=560&q=68&auto=format&fit=crop" alt="Gold bracelets worn on wrist" loading="lazy" decoding="async">
+              <span class="glint"></span>
+              <div class="card-copy">
+                <div class="txt"><h3>Layered Bangles</h3><p>Quiet metal, loud confidence.</p></div>
+                <div class="card-actions">
+                  <button class="add-bag" data-id="bracelet-layered" data-name="Layered Bangles" data-price="18000" data-img="https://images.unsplash.com/photo-1611955167811-4711904bb9f8?w=200&q=80&auto=format&fit=crop">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg> Add
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="coll-card card-lg tilt" data-tilt data-category="rings">
+          <div class="tilt-inner">
+            <div class="media-box">
+              <span class="price-tag">₦16,500</span>
+              <span class="worn-badge">Worn look</span>
+              <img class="base" src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=700&q=68&auto=format&fit=crop" alt="Signet ring product shot" loading="lazy" decoding="async">
+              <img class="swap" src="https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?w=700&q=68&auto=format&fit=crop" alt="Signet ring worn on hand" loading="lazy" decoding="async">
+              <span class="glint"></span>
+              <div class="card-copy">
+                <div class="txt"><h3>Signet Statement Ring</h3><p>The one ring that makes the rest of the stack make sense.</p></div>
+                <div class="card-actions">
+                  <button class="add-bag" data-id="ring-signet" data-name="Signet Statement Ring" data-price="16500" data-img="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=200&q=80&auto=format&fit=crop">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg> Add to bag
+                  </button>
+                  <a class="quick-chat" href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!%20I%27d%20like%20to%20order%20the%20Signet%20Statement%20Ring." target="_blank" rel="noopener">Chat instead</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="studio-section" id="ring-studio">
+    <div class="wrap studio-grid">
+      <div class="studio-copy">
+        <span class="eyebrow reveal">The Ring Line</span>
+        <h2 class="reveal" style="font-size:clamp(30px,4vw,46px);">Turn it over in your hand before you even touch it.</h2>
+        <p class="reveal" style="margin-top:18px;color:var(--ivory-dim);font-size:15.5px;line-height:1.7;max-width:420px;">Keep scrolling, there is a ring waiting for you. From 18K gold-plated pieces to S925 silver and timeless everyday rings, each Slaywithfis piece is carefully selected and finished with attention to details.</p>
+        <div class="stat-mini reveal">
+          <div><b>18k</b><span>Gold plating</span></div>
+          <div><b>S925</b><span>Sterling silver</span></div>
+          <div><b>1</b><span>DM to reserve</span></div>
+        </div>
+        <a href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!%20I%27d%20like%20to%20order%20a%20ring." target="_blank" rel="noopener" class="btn btn-solid magnetic reveal" style="margin-top:36px;">Shop Rings</a>
+      </div>
+      <div class="studio-canvas-wrap reveal">
+        <canvas id="ring-canvas"></canvas>
+        <div class="studio-hint"><span style="width:5px;height:5px;border-radius:50%;background:var(--pink);display:inline-block;"></span> Scroll to rotate</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- SHADES PAGE -->
+<!-- ============================================================ -->
+<div class="page-view" id="page-shades" hidden>
+
+  <section class="hero" id="hero-shades">
+    <canvas class="hero-canvas" id="hero-canvas-shades"></canvas>
+    <div class="wrap hero-inner">
+      <div class="hero-eyebrow"><span class="dot"></span> UV400 protected · gold-detailed frames</div>
+      <h1 class="reveal in-view">Not every glow<br><em>needs sunlight.</em></h1>
+      <p class="hero-sub reveal in-view">Slaywithfis shades are picked to hold their shape past a Lagos afternoon — statement frames for indoors, outdoors, and every camera in between.</p>
+      <div class="hero-actions">
+        <a href="#shades-collection" class="btn btn-gold magnetic">View the Shades</a>
+        <a href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!%20I%20want%20to%20order%20shades." target="_blank" rel="noopener" class="btn btn-outline magnetic">Order on WhatsApp</a>
+      </div>
+    </div>
+    <div class="scroll-cue"><div class="line"></div> SCROLL</div>
+  </section>
+
+  <div class="marquee-band">
+    <div class="marquee-track">
+      <span><b>Slaywithfis Shades</b> — UV400 · gold rims · built to be seen in</span>
+      <span>Aviator</span><span>Cat-Eye</span><span>Round Retro</span><span>@slay_withfis on Instagram</span>
+      <span><b>Slaywithfis Shades</b> — UV400 · gold rims · built to be seen in</span>
+      <span>Aviator</span><span>Cat-Eye</span><span>Round Retro</span><span>@slay_withfis on Instagram</span>
+    </div>
+  </div>
+
+  <section id="shades-collection">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">The Shades Line</span>
+        <h2>Frames built to be seen in</h2>
+        <p>Hover a pair to see it worn, or drop it into your bag and check out on WhatsApp — same bag as your jewelry, one message to us.</p>
+      </div>
+
+      <div class="filter-tabs reveal" data-tabs="shades">
+        <button class="ftab active" data-filter="all">All</button>
+        <button class="ftab" data-filter="aviator">Aviator</button>
+        <button class="ftab" data-filter="cateye">Cat-Eye</button>
+        <button class="ftab" data-filter="round">Round Retro</button>
+      </div>
+
+      <div class="coll-grid" id="coll-grid-shades">
+
+        <div class="coll-card card-lg tilt" data-tilt data-category="aviator">
+          <div class="tilt-inner">
+            <div class="media-box">
+              <span class="price-tag">₦20,000</span>
+              <span class="worn-badge">Worn look</span>
+              <img class="base" src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=700&q=68&auto=format&fit=crop" alt="Aviator shades product shot" loading="lazy" decoding="async">
+              <img class="swap" src="https://images.unsplash.com/photo-1621573433675-3f6cd431a255?w=700&q=68&auto=format&fit=crop" alt="Aviator shades worn" loading="lazy" decoding="async">
+              <span class="glint"></span>
+              <div class="card-copy">
+                <div class="txt"><h3>Aviator Shades</h3><p>Statement frames for indoors and out — the everyday flex.</p></div>
+                <div class="card-actions">
+                  <button class="add-bag" data-id="shades-aviator" data-name="Aviator Shades" data-price="20000" data-img="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=200&q=80&auto=format&fit=crop">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg> Add to bag
+                  </button>
+                  <a class="quick-chat" href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!%20I%27d%20like%20to%20see%20the%20Aviator%20Shades%20in%20stock." target="_blank" rel="noopener">Chat instead</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="coll-card card-md tilt" data-tilt data-category="cateye">
+          <div class="tilt-inner">
+            <div class="media-box">
+              <span class="price-tag">₦22,000</span>
+              <span class="worn-badge">Worn look</span>
+              <img class="base" src="https://images.unsplash.com/photo-1577803645773-f96470509666?w=700&q=68&auto=format&fit=crop" alt="Cat-eye shades product shot" loading="lazy" decoding="async">
+              <img class="swap" src="https://images.unsplash.com/photo-1590076215667-875d4ea4e0e8?w=700&q=68&auto=format&fit=crop" alt="Cat-eye shades worn" loading="lazy" decoding="async">
+              <span class="glint"></span>
+              <div class="card-copy">
+                <div class="txt"><h3>Cat-Eye Shades</h3><p>Sharp corners, softer light. Reads different in every photo.</p></div>
+                <div class="card-actions">
+                  <button class="add-bag" data-id="shades-cateye" data-name="Cat-Eye Shades" data-price="22000" data-img="https://images.unsplash.com/photo-1577803645773-f96470509666?w=200&q=80&auto=format&fit=crop">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg> Add to bag
+                  </button>
+                  <a class="quick-chat" href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!%20I%27d%20like%20to%20see%20the%20Cat-Eye%20Shades%20in%20stock." target="_blank" rel="noopener">Chat instead</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="coll-card card-sm tilt" data-tilt data-category="round">
+          <div class="tilt-inner">
+            <div class="media-box">
+              <span class="price-tag">₦19,000</span>
+              <span class="worn-badge">Worn look</span>
+              <img class="base" src="https://images.unsplash.com/photo-1508296695146-257a814070b4?w=560&q=68&auto=format&fit=crop" alt="Round retro shades product shot" loading="lazy" decoding="async">
+              <img class="swap" src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=560&q=68&auto=format&fit=crop" alt="Round retro shades worn" loading="lazy" decoding="async">
+              <span class="glint"></span>
+              <div class="card-copy">
+                <div class="txt"><h3>Round Retro Shades</h3><p>Vintage curve, gold-wrapped edge.</p></div>
+                <div class="card-actions">
+                  <button class="add-bag" data-id="shades-round" data-name="Round Retro Shades" data-price="19000" data-img="https://images.unsplash.com/photo-1508296695146-257a814070b4?w=200&q=80&auto=format&fit=crop">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg> Add
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="studio-section" id="shades-studio">
+    <div class="wrap studio-grid">
+      <div class="studio-copy">
+        <span class="eyebrow reveal">The Shades Studio</span>
+        <h2 class="reveal" style="font-size:clamp(30px,4vw,46px);">Frames built to be seen in, not just seen through.</h2>
+        <p class="reveal" style="margin-top:18px;color:var(--ivory-dim);font-size:15.5px;line-height:1.7;max-width:420px;">Every Slaywithfis frame is UV-protected, bronze-detailed, and picked to hold its shape past a Lagos afternoon.</p>
+        <div class="stat-mini reveal">
+          <div><b>UV400</b><span>Lens protection</span></div>
+          <div><b>Bronze</b><span>Rim detailing</span></div>
+          <div><b>1</b><span>DM to reserve</span></div>
+        </div>
+        <a href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!%20I%27d%20like%20to%20order%20shades." target="_blank" rel="noopener" class="btn btn-solid magnetic reveal" style="margin-top:36px;">Shop Shades</a>
+      </div>
+      <div class="studio-canvas-wrap reveal" id="shades-canvas-wrap">
+        <canvas id="shades-canvas"></canvas>
+        <div class="studio-hint" id="shades-hint"><span style="width:5px;height:5px;border-radius:50%;background:var(--pink);display:inline-block;"></span> Assembling…</div>
+        <div class="assemble-progress"><div class="assemble-progress-fill" id="assemble-progress-fill"></div></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- SHARED SECTIONS -->
+<!-- ============================================================ -->
+
+<section id="editorial">
+  <img class="parallax-img" id="parallaxImg" src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=1400&q=68&auto=format&fit=crop" alt="Editorial jewelry portrait" loading="lazy" decoding="async">
+  <div class="wrap">
+    <div class="editorial-copy">
+      <span class="eyebrow reveal">The Finish</span>
+      <h2 class="reveal">Gold and silver that keeps its glow after the gele comes off and the night keeps going.</h2>
+      <a href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!%20Tell%20me%20more%20about%20your%20pieces." target="_blank" rel="noopener" class="btn btn-outline magnetic reveal">Ask us anything</a>
+    </div>
+  </div>
+</section>
+
+<section id="howto">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">No Cart Required. But We Built One Anyway.</span>
+      <h2>Ordering is still just a conversation</h2>
+      <p>Add pieces to your bag if you like things tidy, or skip straight to WhatsApp — either way, here's the whole process.</p>
+    </div>
+    <div class="howto-grid">
+      <div class="howto-step reveal">
+        <span class="num">1</span>
+        <h3>Build your bag</h3>
+        <p>Mix jewelry and shades in one bag — switch between the two pages up top, everything you add stays together.</p>
+      </div>
+      <div class="howto-step reveal">
+        <span class="num">2</span>
+        <h3>Checkout on WhatsApp</h3>
+        <p>Your bag becomes one tidy message — every item, size and quantity, sent straight to us.</p>
+      </div>
+      <div class="howto-step reveal">
+        <span class="num">3</span>
+        <h3>We confirm &amp; ship</h3>
+        <p>We confirm availability, payment and delivery details — then your piece is on its way to you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="social">
+  <div class="wrap">
+    <div class="section-head" style="margin-left:auto;margin-right:auto;text-align:center;">
+      <span class="eyebrow reveal">Stay In The Loop</span>
+      <h2 class="reveal">New drops land here first</h2>
+    </div>
+    <div class="social-cards">
+      <div class="social-card reveal">
+        <div class="plat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+          Instagram
+        </div>
+        <div class="handle">@slay_withfis</div>
+        <p>Behind-the-scenes styling, restock alerts and first look at every new piece before it hits the site.</p>
+        <a class="go magnetic" href="https://instagram.com/slay_withfis" target="_blank" rel="noopener">Follow on Instagram</a>
+      </div>
+      <div class="social-card reveal">
+        <div class="plat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 3v11a3.5 3.5 0 1 1-3.5-3.5"/><path d="M15 3c0 2.5 2 4.5 4.5 4.5"/></svg>
+          TikTok
+        </div>
+        <div class="handle">Slaywithfis</div>
+        <p>Try-on hauls, styling tips and the honest close-up shots — see exactly how each piece catches light before you order.</p>
+        <a class="go magnetic" href="https://tiktok.com/@slaywithfis" target="_blank" rel="noopener">Follow on TikTok</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="love">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Kind Words</span>
+      <h2>From people who wear it</h2>
+    </div>
+  </div>
+  <div class="love-track">
+    <div class="love-card"><p>"The hoops are heavier than they look in photos — in the best way. Zero tarnish after weeks of wear."</p><div class="who">Chiamaka · Lagos</div></div>
+    <div class="love-card"><p>"I messaged on WhatsApp at 9pm and had a reply before I put my phone down. That kind of service sells me first."</p><div class="who">Ini · Abuja</div></div>
+    <div class="love-card"><p>"Bought the shades for a wedding, ended up wearing them to work all week. Frame doesn't budge."</p><div class="who">Zainab · Port Harcourt</div></div>
+    <div class="love-card"><p>"Got the promise chain as a gift and the packaging alone made it feel expensive. He's since bought two more."</p><div class="who">Halima · Kano</div></div>
+    <div class="love-card"><p>"The hoops are heavier than they look in photos — in the best way. Zero tarnish after weeks of wear."</p><div class="who">Chiamaka · Lagos</div></div>
+    <div class="love-card"><p>"I messaged on WhatsApp at 9pm and had a reply before I put my phone down. That kind of service sells me first."</p><div class="who">Ini · Abuja</div></div>
+    <div class="love-card"><p>"Bought the shades for a wedding, ended up wearing them to work all week. Frame doesn't budge."</p><div class="who">Zainab · Port Harcourt</div></div>
+    <div class="love-card"><p>"Got the promise chain as a gift and the packaging alone made it feel expensive. He's since bought two more."</p><div class="who">Halima · Kano</div></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2 class="reveal">Ready to <em>finish the look</em>?</h2>
+    <p class="reveal">Send us a message with the piece you want, or just say hi — we reply on WhatsApp, fast.</p>
+    <a href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener" class="btn btn-solid magnetic reveal">
+      Message us on WhatsApp
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <div class="logo">
+        <svg viewBox="0 0 64 64" fill="none"><path d="M32 6 L40 18 L24 18 Z" stroke="#c9a769" stroke-width="2" stroke-linejoin="round"/><circle cx="32" cy="9" r="2.6" fill="#e9d3a3"/><path d="M14 44 V26 L22 34 L32 24 L42 34 L50 26 V44" stroke="#f6eee3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="logo-word">SLAYWITHFIS</span>
+      </div>
+      <p>Giving your appearance the unique look. Statement jewelry, accessories and shades designed and made to be worn, styled and remembered</p>
+    </div>
+    <div class="foot-col">
+      <h4>SHOP</h4>
+      <a href="#top" data-page-link="jewelry">Rings</a>
+      <a href="#top" data-page-link="jewelry">Necklaces</a>
+      <a href="#top" data-page-link="jewelry">Earrings</a>
+      <a href="#top" data-page-link="shades">Shades</a>
+      <a href="#top" data-page-link="shades">Wristwatches</a>
+    </div>
+    <div class="foot-col">
+      <h4>STUDIO</h4>
+      <a href="#howto">How to order</a>
+      <a href="#love">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="foot-col">
+      <h4>FOLLOW</h4>
+      <a href="https://instagram.com/slay_withfis" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://tiktok.com/@slaywithfis" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://wa.me/2349024098340" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© <span id="yr"></span> Slaywithfis. All rights reserved.</span>
+    <span>Designed to be worn.</span>
+  </div>
+</footer>
+
+<a id="wa-fab" href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!" target="_blank" rel="noopener" class="magnetic">
+  <span class="pulse"></span>
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3 .79.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.25-.12-1.45-.72-1.68-.8-.22-.08-.38-.12-.55.12-.16.24-.63.8-.77.96-.14.16-.28.18-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.36-1.7-.14-.24-.02-.37.1-.5.11-.1.25-.28.37-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.32-.75-1.8-.2-.48-.4-.4-.55-.4h-.47c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02 0 1.2.87 2.35 1 2.51.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.5.58.18 1.1.16 1.52.1.46-.07 1.45-.6 1.65-1.17.2-.58.2-1.07.14-1.17-.06-.1-.22-.16-.47-.28Z"/></svg>
+  <span>Chat on WhatsApp</span>
+</a>
+
+<div id="live-toast">
+  <span class="dotlive"></span>
+  <div class="txt">
+    <b id="lt-title">Amaka just messaged about the Aurora Hoops</b>
+    <span id="lt-sub">Lagos · moments ago</span>
+    <span class="tiny">Rotating showcase — not a live order feed</span>
+  </div>
+</div>
+
+<!-- ============ CART DRAWER ============ -->
+<div id="cart-overlay"></div>
+<aside id="cart-drawer">
+  <div class="cart-head">
+    <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg> Your Bag</h3>
+    <button class="cart-close" id="cart-close">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items">
+    <div class="cart-empty" id="cart-empty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      Your bag is empty — add a piece to get started.
+    </div>
+  </div>
+  <div class="cart-foot">
+    <label class="gift-wrap-row">
+      <input type="checkbox" id="gift-wrap"> Gift wrap this order (+₦2,000) 🎁
+    </label>
+    <div class="cart-subtotal"><span>Subtotal</span><b id="cart-subtotal">₦0</b></div>
+    <a href="#" id="checkout-btn" class="btn btn-solid magnetic" target="_blank" rel="noopener">Checkout on WhatsApp</a>
+    <p class="cart-note">You'll confirm payment &amp; delivery directly with us on WhatsApp.</p>
+  </div>
+</aside>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ---------- preloader ---------- */
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('preloader').classList.add('done'), 500);
+});
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---------- magnetic buttons ---------- */
+document.querySelectorAll('.magnetic').forEach(el=>{
+  el.addEventListener('mousemove', e=>{
+    const r = el.getBoundingClientRect();
+    const relX = e.clientX - r.left - r.width/2;
+    const relY = e.clientY - r.top - r.height/2;
+    el.style.transform = `translate(${relX*0.16}px, ${relY*0.26}px)`;
+  });
+  el.addEventListener('mouseleave', ()=>{ el.style.transform=''; });
+});
+
+/* ---------- header on scroll ---------- */
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', ()=>{ header.classList.toggle('scrolled', window.scrollY > 40); });
+
+/* ---------- scroll reveal ---------- */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in-view'); io.unobserve(en.target); } });
+},{ threshold:0.18 });
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- counters ---------- */
+const cio = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){
+      const el = en.target; const target = parseInt(el.dataset.target,10);
+      const dur = 1400; const start = performance.now();
+      function step(t){
+        const p = Math.min((t-start)/dur,1);
+        el.textContent = Math.floor(p*target);
+        if(p<1) requestAnimationFrame(step); else el.textContent = target;
+      }
+      requestAnimationFrame(step); cio.unobserve(el);
+    }
+  });
+},{ threshold:0.4 });
+document.querySelectorAll('.count').forEach(c=>cio.observe(c));
+
+/* ---------- tilt cards ---------- */
+document.querySelectorAll('[data-tilt]').forEach(card=>{
+  const inner = card.querySelector('.tilt-inner');
+  card.addEventListener('mousemove', e=>{
+    const r = card.getBoundingClientRect();
+    const px = (e.clientX - r.left)/r.width - 0.5;
+    const py = (e.clientY - r.top)/r.height - 0.5;
+    inner.style.transform = `rotateY(${px*8}deg) rotateX(${-py*8}deg) scale(1.01)`;
+  });
+  card.addEventListener('mouseleave', ()=>{ inner.style.transform = ''; });
+});
+
+/* ---------- filter tabs (scoped per page's tab group) ---------- */
+document.querySelectorAll('.filter-tabs').forEach(group=>{
+  const scope = group.dataset.tabs;
+  const grid = document.getElementById('coll-grid-'+scope);
+  const tabs = group.querySelectorAll('.ftab');
+  tabs.forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      tabs.forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      const f = tab.dataset.filter;
+      grid.querySelectorAll('.coll-card').forEach(c=>{
+        const match = f==='all' || c.dataset.category===f;
+        c.classList.toggle('hide', !match);
+      });
+    });
+  });
+});
+
+/* ---------- editorial parallax ---------- */
+const parallaxImg = document.getElementById('parallaxImg');
+const editorialSection = document.getElementById('editorial');
+window.addEventListener('scroll', ()=>{
+  const r = editorialSection.getBoundingClientRect();
+  const prog = (window.innerHeight - r.top) / (window.innerHeight + r.height);
+  const offset = (prog - 0.5) * 60;
+  parallaxImg.style.transform = `translateY(${offset}px) scale(1.08)`;
+});
+
+/* ---------- activity toast: a rotating showcase of past-style messages,
+   clearly labeled in the UI as not a live order feed ---------- */
+const liveEvents = [
+  ["Amaka just messaged about the Aurora Hoops","Lagos · moments ago"],
+  ["Ini reserved the Ouroboros Ring","Abuja · moments ago"],
+  ["Zainab asked about the Aviator Shades","Port Harcourt · moments ago"],
+  ["Blessing just followed on TikTok","Ibadan · moments ago"],
+  ["Fatima messaged about the layered chain set","Kano · moments ago"],
+];
+let ltIndex = 0;
+const liveToast = document.getElementById('live-toast');
+const ltTitle = document.getElementById('lt-title');
+const ltSub = document.getElementById('lt-sub');
+function cycleToast(){
+  const [t,s] = liveEvents[ltIndex % liveEvents.length];
+  ltTitle.textContent = t; ltSub.textContent = s;
+  liveToast.classList.add('show');
+  setTimeout(()=>liveToast.classList.remove('show'), 4600);
+  ltIndex++;
+}
+setTimeout(()=>{ cycleToast(); setInterval(cycleToast, 8000); }, 3200);
+
+/* =========================================================
+   IMAGE FALLBACK — if a "worn" hover photo fails to load, fall
+   back to a subtle zoom on the product shot instead of a black
+   box. If the base product photo itself fails, swap in a soft
+   gradient placeholder rather than solid black.
+========================================================= */
+document.querySelectorAll('.media-box').forEach(box=>{
+  const base = box.querySelector('img.base');
+  const swap = box.querySelector('img.swap');
+  const card = box.closest('.coll-card');
+  if(swap){
+    swap.addEventListener('error', ()=>{
+      swap.style.display = 'none';
+      if(card) card.classList.add('no-swap');
+    }, { once:true });
+  }
+  if(base){
+    base.addEventListener('error', ()=>{
+      base.style.display = 'none';
+      box.style.background = 'linear-gradient(135deg,#2a2228,#160f14)';
+    }, { once:true });
+  }
+});
+
+/* =========================================================
+   PAGE SWITCHER (Jewelry <-> Shades)
+========================================================= */
+const pageToggle = document.getElementById('page-toggle');
+const pageJewelry = document.getElementById('page-jewelry');
+const pageShades = document.getElementById('page-shades');
+let currentPage = 'jewelry';
+
+function goToPage(page, scrollTop){
+  if(page === currentPage) { if(scrollTop) window.scrollTo({top:0, behavior:'smooth'}); return; }
+  const outEl = currentPage === 'jewelry' ? pageJewelry : pageShades;
+  const inEl = page === 'jewelry' ? pageJewelry : pageShades;
+
+  outEl.classList.add('page-fade-out');
+  setTimeout(()=>{
+    outEl.hidden = true;
+    outEl.classList.remove('page-fade-out');
+    inEl.hidden = false;
+
+    /* FIX: canvases inside this page were sized while it was `hidden`
+       (display:none -> clientWidth/clientHeight === 0), so their Three.js
+       renderers/cameras never got real dimensions and stayed stuck at
+       0x0 (or NaN aspect). Each scene already listens for the window
+       'resize' event, so firing one now — right after the page becomes
+       visible and has real layout — makes every canvas on this page
+       (including the shades assembly and its hero frame) re-measure
+       itself and render correctly and immediately, instead of only
+       working after the user happens to resize their browser window. */
+    window.dispatchEvent(new Event('resize'));
+
+    inEl.classList.add('page-fade-in');
+    setTimeout(()=>{
+      inEl.classList.remove('page-fade-in');
+      // second pass in case webfont/layout settling shifted sizes
+      window.dispatchEvent(new Event('resize'));
+    }, 480);
+    if(scrollTop) window.scrollTo({top:0, behavior:'instant' in window ? 'instant' : 'auto'});
+  }, 260);
+
+  currentPage = page;
+  pageToggle.classList.toggle('on-shades', page === 'shades');
+  pageToggle.querySelectorAll('a').forEach(a=> a.classList.toggle('active', a.dataset.page === page));
+  mmPageToggle.classList.toggle('on-shades', page === 'shades');
+  mmPageToggle.querySelectorAll('a').forEach(a=> a.classList.toggle('active', a.dataset.page === page));
+}
+
+pageToggle.querySelectorAll('a').forEach(a=>{
+  a.addEventListener('click', (e)=>{ e.preventDefault(); goToPage(a.dataset.page, true); });
+});
+document.querySelectorAll('[data-page-link]').forEach(a=>{
+  a.addEventListener('click', (e)=>{ e.preventDefault(); goToPage(a.dataset.pageLink, true); closeMobileMenu(); });
+});
+
+/* =========================================================
+   MOBILE MENU (hamburger)
+   Opens a full-screen panel that visually replaces the page
+   content (rest of the page is inert/scroll-locked underneath),
+   with its own close (✕) button plus the hamburger itself
+   morphing into a close icon while open. Closes on: close button,
+   Escape key, clicking a link/anchor inside, or resizing past
+   the mobile breakpoint.
+========================================================= */
+const burgerBtn = document.getElementById('burger-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const mmClose = document.getElementById('mm-close');
+const mmPageToggle = document.getElementById('mm-page-toggle');
+let menuOpen = false;
+
+function openMobileMenu(){
+  menuOpen = true;
+  mobileMenu.classList.add('open');
+  mobileMenu.setAttribute('aria-hidden','false');
+  burgerBtn.classList.add('is-open');
+  burgerBtn.setAttribute('aria-expanded','true');
+  burgerBtn.querySelector('.burger-label').textContent = 'Close';
+  document.body.classList.add('menu-open');
+}
+function closeMobileMenu(){
+  if(!menuOpen) return;
+  menuOpen = false;
+  mobileMenu.classList.remove('open');
+  mobileMenu.setAttribute('aria-hidden','true');
+  burgerBtn.classList.remove('is-open');
+  burgerBtn.setAttribute('aria-expanded','false');
+  burgerBtn.querySelector('.burger-label').textContent = 'Menu';
+  document.body.classList.remove('menu-open');
+}
+burgerBtn.addEventListener('click', ()=>{ menuOpen ? closeMobileMenu() : openMobileMenu(); });
+mmClose.addEventListener('click', closeMobileMenu);
+document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeMobileMenu(); });
+document.querySelectorAll('[data-mm-anchor]').forEach(a=>{
+  a.addEventListener('click', closeMobileMenu);
+});
+mmPageToggle.querySelectorAll('a').forEach(a=>{
+  a.addEventListener('click', (e)=>{ e.preventDefault(); goToPage(a.dataset.page, true); closeMobileMenu(); });
+});
+window.addEventListener('resize', ()=>{ if(window.innerWidth > 900) closeMobileMenu(); });
+
+/* =========================================================
+   CURSOR SPARKLE TRAIL
+========================================================= */
+(function(){
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced) return;
+  let lastSpawn = 0;
+  window.addEventListener('mousemove', (e)=>{
+    const now = performance.now();
+    if(now - lastSpawn < 45) return;
+    lastSpawn = now;
+    const s = document.createElement('div');
+    s.className = 'cursor-spark';
+    const size = 3 + Math.random()*3;
+    s.style.width = size+'px'; s.style.height = size+'px';
+    s.style.left = (e.clientX - size/2)+'px';
+    s.style.top = (e.clientY - size/2)+'px';
+    s.style.background = Math.random() > 0.55 ? 'var(--champagne-2)' : 'var(--pink-2)';
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(), 650);
+  });
+})();
+
+/* =========================================================
+   CART SYSTEM (shared across both pages)
+========================================================= */
+let cart = [];
+const WA_NUMBER = "2349024098340";
+const cartToggle = document.getElementById('cart-toggle');
+const cartClose = document.getElementById('cart-close');
+const cartOverlay = document.getElementById('cart-overlay');
+const cartDrawer = document.getElementById('cart-drawer');
+const cartItemsEl = document.getElementById('cart-items');
+const cartCountEl = document.getElementById('cart-count');
+const cartSubtotalEl = document.getElementById('cart-subtotal');
+const checkoutBtn = document.getElementById('checkout-btn');
+const giftWrapCheckbox = document.getElementById('gift-wrap');
+
+const SHADES_IDS = new Set(['shades-aviator','shades-cateye','shades-round']);
+
+function formatNaira(n){ return '₦' + n.toLocaleString('en-NG'); }
+
+function openCart(){ closeMobileMenu(); cartOverlay.classList.add('open'); cartDrawer.classList.add('open'); }
+function closeCart(){ cartOverlay.classList.remove('open'); cartDrawer.classList.remove('open'); }
+cartToggle.addEventListener('click', openCart);
+cartClose.addEventListener('click', closeCart);
+cartOverlay.addEventListener('click', closeCart);
+
+function addToCart(item){
+  const existing = cart.find(i=>i.id===item.id);
+  if(existing){ existing.qty++; } else { cart.push({...item, qty:1}); }
+  renderCart();
+  bounceCartIcon();
+}
+function changeQty(id, delta){
+  const item = cart.find(i=>i.id===id);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty<=0) cart = cart.filter(i=>i.id!==id);
+  renderCart();
+}
+function removeItem(id){ cart = cart.filter(i=>i.id!==id); renderCart(); }
+
+function renderCart(){
+  const totalQty = cart.reduce((s,i)=>s+i.qty,0);
+  cartCountEl.textContent = totalQty;
+  cartCountEl.classList.toggle('show', totalQty>0);
+
+  if(cart.length===0){
+    cartItemsEl.innerHTML = `<div class="cart-empty" id="cart-empty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      Your bag is empty — add a piece to get started.
+    </div>`;
+  } else {
+    const jewelryItems = cart.filter(i=>!SHADES_IDS.has(i.id));
+    const shadesItems = cart.filter(i=>SHADES_IDS.has(i.id));
+    let html = '';
+    if(jewelryItems.length){
+      html += `<div class="cart-group-label">JEWELRY</div>` + jewelryItems.map(renderCartItem).join('');
+    }
+    if(shadesItems.length){
+      html += `<div class="cart-group-label">SHADES</div>` + shadesItems.map(renderCartItem).join('');
+    }
+    cartItemsEl.innerHTML = html;
+  }
+
+  let subtotal = cart.reduce((s,i)=>s + i.price*i.qty, 0);
+  if(giftWrapCheckbox.checked && cart.length>0) subtotal += 2000;
+  cartSubtotalEl.textContent = formatNaira(subtotal);
+
+  let msg = "Hi Slaywithfis! I'd like to order:\n";
+  const jewelryItems = cart.filter(i=>!SHADES_IDS.has(i.id));
+  const shadesItems = cart.filter(i=>SHADES_IDS.has(i.id));
+  if(jewelryItems.length){
+    msg += "\nJewelry:\n";
+    jewelryItems.forEach(i=>{ msg += `- ${i.name} x${i.qty} — ${formatNaira(i.price*i.qty)}\n`; });
+  }
+  if(shadesItems.length){
+    msg += "\nShades:\n";
+    shadesItems.forEach(i=>{ msg += `- ${i.name} x${i.qty} — ${formatNaira(i.price*i.qty)}\n`; });
+  }
+  if(giftWrapCheckbox.checked && cart.length>0) msg += `\nGift wrap — ₦2,000\n`;
+  msg += `\nSubtotal: ${formatNaira(subtotal)}`;
+  checkoutBtn.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+}
+
+function renderCartItem(i){
+  return `
+      <div class="cart-item">
+        <img src="${i.img}" alt="${i.name}">
+        <div class="ci-info">
+          <span class="ci-name">${i.name}</span>
+          <span class="ci-price">${formatNaira(i.price)}</span>
+          <div class="ci-qty">
+            <button onclick="changeQty('${i.id}',-1)">−</button>
+            <span>${i.qty}</span>
+            <button onclick="changeQty('${i.id}',1)">+</button>
+          </div>
+        </div>
+        <button class="ci-remove" onclick="removeItem('${i.id}')">Remove</button>
+      </div>
+    `;
+}
+giftWrapCheckbox.addEventListener('change', renderCart);
+
+function bounceCartIcon(){
+  cartToggle.style.transform = 'scale(1.18)';
+  setTimeout(()=>{ cartToggle.style.transform = ''; }, 220);
+}
+
+function sparkBurst(x,y, color){
+  for(let i=0;i<10;i++){
+    const s = document.createElement('div');
+    s.className = 'spark';
+    const angle = Math.random()*Math.PI*2;
+    const dist = 40 + Math.random()*50;
+    s.style.setProperty('--sx', Math.cos(angle)*dist+'px');
+    s.style.setProperty('--sy', Math.sin(angle)*dist+'px');
+    s.style.left = x+'px'; s.style.top = y+'px';
+    const size = 3+Math.random()*4;
+    s.style.width = size+'px'; s.style.height = size+'px';
+    s.style.background = color;
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(), 750);
+  }
+}
+
+document.querySelectorAll('.add-bag').forEach(btn=>{
+  btn.addEventListener('click', (e)=>{
+    const r = btn.getBoundingClientRect();
+    sparkBurst(r.left+r.width/2, r.top+r.height/2, Math.random()>0.5 ? '#e23f8f' : '#c9a769');
+    addToCart({
+      id: btn.dataset.id,
+      name: btn.dataset.name,
+      price: parseInt(btn.dataset.price,10),
+      img: btn.dataset.img
+    });
+    openCart();
+  });
+});
+
+/* =========================================================
+   THREE.JS — JEWELRY HERO RING
+   (gem material trimmed to properties this three.js build
+   actually supports — no more console warnings)
+========================================================= */
+function makeRingScene(canvasId, xOffset){
+  const canvas = document.getElementById(canvasId);
+  if(!canvas) return null;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, innerWidth/innerHeight, 0.1, 100);
+  camera.position.set(0,0,9);
+
+  function resize(){
+    renderer.setSize(innerWidth, innerHeight);
+    camera.aspect = innerWidth/innerHeight;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  scene.add(new THREE.AmbientLight(0x554128, 1.5));
+  const key = new THREE.PointLight(0xe9d3a3, 3.2, 30); key.position.set(6,4,8); scene.add(key);
+  const fill = new THREE.PointLight(0xe23f8f, 1.4, 30); fill.position.set(-6,-3,6); scene.add(fill);
+
+  const ringGroup = new THREE.Group();
+  const bandMat = new THREE.MeshStandardMaterial({ color:0xc9a769, metalness:1, roughness:0.25, emissive:0x2a1d0c, emissiveIntensity:0.2 });
+  const band = new THREE.Mesh(new THREE.TorusGeometry(1.75, 0.32, 40, 100), bandMat);
+  band.rotation.x = Math.PI/2.4;
+  ringGroup.add(band);
+
+  const gemMat = new THREE.MeshPhysicalMaterial({
+    color:0xf6eee3, metalness:0.1, roughness:0.05,
+    transparent:true, opacity:0.92,
+    clearcoat:1, clearcoatRoughness:0.08,
+    emissive:0xe9d3a3, emissiveIntensity:0.15
+  });
+  const gem = new THREE.Mesh(new THREE.OctahedronGeometry(0.62, 0), gemMat);
+  gem.position.set(0, 1.55, 0.55);
+  ringGroup.add(gem);
+
+  const setting = new THREE.Mesh(new THREE.TorusGeometry(0.62, 0.08, 16, 32), bandMat);
+  setting.position.copy(gem.position);
+  ringGroup.add(setting);
+
+  for(let i=0;i<6;i++){
+    const chip = new THREE.Mesh(new THREE.OctahedronGeometry(0.09,0), gemMat);
+    const ang = (i/6)*Math.PI*2;
+    chip.position.set(Math.cos(ang)*1.75*0.98, Math.sin(ang)*1.75*0.98*0.42+0.1, Math.sin(ang*1.7)*0.3);
+    ringGroup.add(chip);
+  }
+
+  ringGroup.position.x = xOffset;
+  scene.add(ringGroup);
+
+  let targetX = 0, targetY = 0;
+  window.addEventListener('mousemove', e=>{
+    targetX = (e.clientX/innerWidth - 0.5);
+    targetY = (e.clientY/innerHeight - 0.5);
+  });
+
+  function animate(){
+    requestAnimationFrame(animate);
+    if(!reduced){
+      ringGroup.rotation.y += 0.0038;
+      ringGroup.rotation.x += 0.0012;
+    }
+    ringGroup.rotation.z += (targetX*0.35 - ringGroup.rotation.z)*0.02;
+    camera.position.x += (targetX*1.2 - camera.position.x)*0.03;
+    camera.position.y += (-targetY*0.8 - camera.position.y)*0.03;
+    camera.lookAt(xOffset*0.26,0,0);
+    renderer.render(scene, camera);
+  }
+  animate();
+}
+makeRingScene('hero-canvas-jewelry', 2.3);
+
+/* =========================================================
+   THREE.JS — SECOND RING (rotates with scroll, in the ring studio)
+========================================================= */
+(function(){
+  const canvas = document.getElementById('ring-canvas');
+  if(!canvas) return;
+  const wrap = canvas.parentElement;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+  camera.position.set(0,0,7);
+
+  function resize(){
+    const w = wrap.clientWidth, h = wrap.clientHeight;
+    renderer.setSize(w,h);
+    camera.aspect = w/h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  scene.add(new THREE.AmbientLight(0x554128, 1.6));
+  const key = new THREE.PointLight(0xe9d3a3, 3, 30); key.position.set(5,4,7); scene.add(key);
+  const fill = new THREE.PointLight(0xe23f8f, 1.6, 30); fill.position.set(-5,-2,5); scene.add(fill);
+
+  const bandMat = new THREE.MeshStandardMaterial({ color:0xc9a769, metalness:1, roughness:0.22 });
+  const gemMat = new THREE.MeshPhysicalMaterial({
+    color:0xf6eee3, metalness:0.1, roughness:0.05,
+    transparent:true, opacity:0.92,
+    clearcoat:1, clearcoatRoughness:0.08
+  });
+
+  const ring = new THREE.Group();
+  const band = new THREE.Mesh(new THREE.TorusGeometry(1.5, 0.36, 40, 100), bandMat);
+  ring.add(band);
+  const gem = new THREE.Mesh(new THREE.OctahedronGeometry(0.55,0), gemMat);
+  gem.position.set(0, 1.4, 0);
+  ring.add(gem);
+  const setting = new THREE.Mesh(new THREE.TorusGeometry(0.55, 0.07, 16, 32), bandMat);
+  setting.position.copy(gem.position);
+  ring.add(setting);
+  scene.add(ring);
+
+  function updateRotation(){
+    const r = wrap.getBoundingClientRect();
+    const centerOffset = (r.top + r.height/2) - innerHeight/2;
+    const progress = -centerOffset / innerHeight;
+    ring.rotation.y = progress * 3.4;
+    ring.rotation.x = Math.PI/2.6 + Math.sin(progress*1.4) * 0.15;
+  }
+  window.addEventListener('scroll', updateRotation);
+  updateRotation();
+
+  let targetX = 0;
+  window.addEventListener('mousemove', e=>{ targetX = (e.clientX/innerWidth - 0.5); });
+
+  function animate(){
+    requestAnimationFrame(animate);
+    if(!reduced){ ring.rotation.z += (targetX*0.2 - ring.rotation.z)*0.03; }
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+
+/* =========================================================
+   THREE.JS — SHADES HERO (big frame, offset to the side so it
+   never sits under the headline). Given its own bronze/amber
+   material palette, distinct from the jewelry gold, so shades
+   read as their own product line and the tinted lenses look
+   more like real sunglass glass than a flat black disc.
+========================================================= */
+function buildShadesGroup(frameMat, lensMat, lensRadius, lensDepth){
+  const glasses = new THREE.Group();
+  function makeLens(x){
+    const g = new THREE.Group();
+    const lensGeo = new THREE.CylinderGeometry(lensRadius, lensRadius, lensDepth, 48);
+    const lens = new THREE.Mesh(lensGeo, lensMat);
+    lens.rotation.x = Math.PI/2; // real thickness so it never goes edge-on invisible
+    g.add(lens);
+    g.add(new THREE.Mesh(new THREE.TorusGeometry(lensRadius, lensRadius*0.07, 16, 48), frameMat));
+    g.position.x = x;
+    return g;
+  }
+  const gap = lensRadius*1.18;
+  glasses.add(makeLens(-gap), makeLens(gap));
+  const bridge = new THREE.Mesh(new THREE.BoxGeometry(lensRadius*0.45,0.09,0.09), frameMat);
+  glasses.add(bridge);
+  [[-gap,-1],[gap,1]].forEach(([x,sign])=>{
+    const temple = new THREE.Mesh(new THREE.BoxGeometry(1.7,0.08,0.08), frameMat);
+    temple.position.set(x + sign*1.5, 0, -lensDepth*3);
+    temple.rotation.y = sign*0.9;
+    glasses.add(temple);
+  });
+  return glasses;
+}
+
+function makeShadesHeroScene(canvasId){
+  const canvas = document.getElementById(canvasId);
+  if(!canvas) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, innerWidth/innerHeight, 0.1, 100);
+  camera.position.set(0,0,9);
+
+  function resize(){
+    renderer.setSize(innerWidth, innerHeight);
+    camera.aspect = innerWidth/innerHeight;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  scene.add(new THREE.AmbientLight(0x554128, 1.6));
+  const key = new THREE.PointLight(0xe9d3a3, 3, 30); key.position.set(6,4,8); scene.add(key);
+  const fill = new THREE.PointLight(0xe23f8f, 1.6, 30); fill.position.set(-6,-3,6); scene.add(fill);
+
+  const frameMat = new THREE.MeshStandardMaterial({ color:0xa8703f, metalness:0.9, roughness:0.32 });
+  const lensMat = new THREE.MeshPhysicalMaterial({
+    color:0xb5652c, metalness:0.2, roughness:0.12,
+    transparent:true, opacity:0.62, clearcoat:0.8, clearcoatRoughness:0.15
+  });
+
+  const glasses = buildShadesGroup(frameMat, lensMat, 1.15, 0.14);
+  // parked well to the right, clear of the left-aligned headline text
+  const restX = 2.7;
+  glasses.position.x = restX;
+  scene.add(glasses);
+
+  let targetX = 0, targetY = 0;
+  window.addEventListener('mousemove', e=>{
+    targetX = (e.clientX/innerWidth - 0.5);
+    targetY = (e.clientY/innerHeight - 0.5);
+  });
+
+  function animate(){
+    requestAnimationFrame(animate);
+    if(!reduced){ glasses.rotation.y += 0.0032; }
+    glasses.rotation.z += (targetX*0.3 - glasses.rotation.z)*0.02;
+    camera.position.x += (targetX*1.1 - camera.position.x)*0.03;
+    camera.position.y += (-targetY*0.7 - camera.position.y)*0.03;
+    camera.lookAt(restX*0.3,0,0);
+    renderer.render(scene, camera);
+  }
+  animate();
+}
+makeShadesHeroScene('hero-canvas-shades');
+
+/* =========================================================
+   THREE.JS — SHADES ASSEMBLY (motion graphic, triggered on view)
+
+   No scroll-distance trick here: an IntersectionObserver fires the
+   moment the canvas is ~25% into the viewport, and the assembly
+   plays out over a fixed ~1.5s of real time using requestAnimationFrame
+   timestamps. That means it finishes quickly regardless of how fast
+   someone scrolls — by the time the section is in front of them it's
+   already assembling (or done), never stuck waiting on more scroll,
+   and it needs no extra page height to work.
+========================================================= */
+(function(){
+  const canvas = document.getElementById('shades-canvas');
+  const wrap = document.getElementById('shades-canvas-wrap');
+  const progressFill = document.getElementById('assemble-progress-fill');
+  const hint = document.getElementById('shades-hint');
+  if(!canvas || !wrap) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha:true, antialias:true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+  camera.position.set(0,0,7.5);
+
+  function resize(){
+    const w = wrap.clientWidth, h = wrap.clientHeight;
+    renderer.setSize(w,h);
+    camera.aspect = w/h;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  scene.add(new THREE.AmbientLight(0x554128, 1.6));
+  const key = new THREE.PointLight(0xe9d3a3, 3, 30); key.position.set(5,4,7); scene.add(key);
+  const fill = new THREE.PointLight(0xe23f8f, 1.6, 30); fill.position.set(-5,-2,5); scene.add(fill);
+
+  // bronze/amber palette — distinct from the jewelry ring's champagne gold
+  const frameMat = new THREE.MeshStandardMaterial({ color:0xa8703f, metalness:0.9, roughness:0.3 });
+  const lensMat = new THREE.MeshPhysicalMaterial({
+    color:0xb5652c, metalness:0.2, roughness:0.12,
+    transparent:true, opacity:0.62, clearcoat:0.8, clearcoatRoughness:0.15
+  });
+  const padMat = new THREE.MeshStandardMaterial({ color:0xd4996a, metalness:0.6, roughness:0.38 });
+
+  const group = new THREE.Group();
+  scene.add(group);
+
+  const V = (x,y,z)=>new THREE.Vector3(x,y,z);
+  const E = (x,y,z)=>new THREE.Euler(x,y,z);
+  const parts = [];
+  function addPart(mesh, finalPos, finalRot, explodedPos, explodedRot){
+    mesh.position.copy(explodedPos);
+    mesh.rotation.copy(explodedRot);
+    mesh.userData = { finalPos, finalRot, explodedPos: explodedPos.clone(), explodedRot: explodedRot.clone() };
+    group.add(mesh);
+    parts.push(mesh);
+  }
+
+  const lensGeo = new THREE.CylinderGeometry(1,1,0.14,48);
+  const rimGeo = new THREE.TorusGeometry(1,0.08,16,48);
+
+  const lensL = new THREE.Group();
+  const lensLMesh = new THREE.Mesh(lensGeo, lensMat); lensLMesh.rotation.x = Math.PI/2; lensL.add(lensLMesh);
+  lensL.add(new THREE.Mesh(rimGeo, frameMat));
+  addPart(lensL, V(-1.15,0,0), E(0,0,0), V(-4.4,2.8,-2.2), E(0.6,1.2,0.4));
+
+  const lensR = new THREE.Group();
+  const lensRMesh = new THREE.Mesh(lensGeo, lensMat); lensRMesh.rotation.x = Math.PI/2; lensR.add(lensRMesh);
+  lensR.add(new THREE.Mesh(rimGeo, frameMat));
+  addPart(lensR, V(1.15,0,0), E(0,0,0), V(4.6,-2.6,-2.2), E(-0.5,-1.1,0.3));
+
+  addPart(new THREE.Mesh(new THREE.BoxGeometry(0.5,0.09,0.09), frameMat), V(0,0.02,0.05), E(0,0,0), V(0,4.6,1.6), E(1.4,0,0));
+  addPart(new THREE.Mesh(new THREE.SphereGeometry(0.09,12,12), padMat), V(-0.32,-0.35,0.35), E(0,0,0), V(-2.5,-4.3,2.6), E(0,0,0));
+  addPart(new THREE.Mesh(new THREE.SphereGeometry(0.09,12,12), padMat), V(0.32,-0.35,0.35), E(0,0,0), V(2.7,4.1,2.8), E(0,0,0));
+
+  addPart(new THREE.Mesh(new THREE.BoxGeometry(0.12,0.16,0.12), frameMat), V(-1.15,0,-0.42), E(0,0,0), V(-5.1,0.5,3.1), E(0,1.8,0));
+  addPart(new THREE.Mesh(new THREE.BoxGeometry(0.12,0.16,0.12), frameMat), V(1.15,0,-0.42), E(0,0,0), V(5.2,-0.7,3.2), E(0,-1.8,0));
+
+  addPart(new THREE.Mesh(new THREE.BoxGeometry(1.5,0.07,0.07), frameMat), V(-1.85,0,-0.75), E(0,-0.9,0), V(-6.1,3.1,4.1), E(0,-2.4,0.6));
+  addPart(new THREE.Mesh(new THREE.BoxGeometry(1.5,0.07,0.07), frameMat), V(1.85,0,-0.75), E(0,0.9,0), V(6.2,-3.3,4.2), E(0,2.4,-0.6));
+  addPart(new THREE.Mesh(new THREE.SphereGeometry(0.06,10,10), padMat), V(-2.5,0,-1.35), E(0,0,0), V(-7.1,4.2,5.1), E(0,0,0));
+  addPart(new THREE.Mesh(new THREE.SphereGeometry(0.06,10,10), padMat), V(2.5,0,-1.35), E(0,0,0), V(7.2,-4.4,5.2), E(0,0,0));
+
+  const tmp = new THREE.Vector3();
+  const ASSEMBLE_MS = reduced ? 1 : 1500; // real time for the assembly, not scroll distance
+  let assembleStart = null;
+  let assembled = reduced;
+
+  function setAssembly(t){
+    const eased = t*t*(3-2*t); // smoothstep
+    parts.forEach(p=>{
+      tmp.lerpVectors(p.userData.explodedPos, p.userData.finalPos, eased);
+      p.position.copy(tmp);
+      p.rotation.x = THREE.MathUtils.lerp(p.userData.explodedRot.x, p.userData.finalRot.x, eased);
+      p.rotation.y = THREE.MathUtils.lerp(p.userData.explodedRot.y, p.userData.finalRot.y, eased);
+      p.rotation.z = THREE.MathUtils.lerp(p.userData.explodedRot.z, p.userData.finalRot.z, eased);
+    });
+    if(progressFill) progressFill.style.width = (t*100).toFixed(0)+'%';
+    if(hint) hint.style.opacity = t > 0.03 ? '0' : '1';
+  }
+  setAssembly(reduced ? 1 : 0);
+
+  // fire the moment the canvas is meaningfully in view — no scroll distance required
+  const io2 = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting && assembleStart===null){
+        assembleStart = performance.now();
+      }
+    });
+  }, { threshold:0.25 });
+  io2.observe(wrap);
+
+  let targetX = 0;
+  window.addEventListener('mousemove', e=>{ targetX = (e.clientX/innerWidth - 0.5); });
+
+  function animate(now){
+    requestAnimationFrame(animate);
+    if(!assembled && assembleStart!==null){
+      const t = Math.min((now - assembleStart)/ASSEMBLE_MS, 1);
+      setAssembly(t);
+      if(t>=1) assembled = true;
+    }
+    if(assembled && !reduced){ group.rotation.y += 0.006; }
+    group.rotation.z += (targetX*0.15 - group.rotation.z)*0.03;
+    renderer.render(scene, camera);
+  }
+  requestAnimationFrame(animate);
+})();
+</script>
+</body>
+</html>

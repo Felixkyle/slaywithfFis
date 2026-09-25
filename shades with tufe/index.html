@@ -1183,6 +1183,10 @@
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       gap: 22px;
+      /* NEW: lets the grid pack cards of mixed sizes without leaving gaps
+         as more products are added — essential once the list isn't a
+         fixed, hand-tuned count of 5 or 3 anymore. */
+      grid-auto-flow: dense;
     }
 
     .coll-card {
@@ -1992,64 +1996,6 @@
       }
     }
 
-    /* ============ activity toast — clearly labeled as a showcase, not live orders ============ */
-    #live-toast {
-      position: fixed;
-      left: 26px;
-      bottom: 26px;
-      z-index: 390;
-      background: var(--charcoal-2);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 14px 18px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      max-width: 290px;
-      transform: translateY(140%);
-      transition: transform .6s cubic-bezier(.2, .8, .3, 1);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, .35);
-    }
-
-    #live-toast.show {
-      transform: translateY(0);
-    }
-
-    #live-toast .dotlive {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--champagne-2);
-      flex-shrink: 0;
-      box-shadow: 0 0 0 4px rgba(201, 167, 105, 0.18);
-    }
-
-    #live-toast .txt b {
-      display: block;
-      font-size: 13px;
-      color: var(--ivory);
-    }
-
-    #live-toast .txt span {
-      font-size: 12px;
-      color: var(--ivory-dim);
-    }
-
-    #live-toast .tiny {
-      font-size: 9.5px;
-      letter-spacing: .06em;
-      color: var(--ivory-dim);
-      opacity: .65;
-      margin-top: 2px;
-      display: block;
-    }
-
-    @media (max-width:640px) {
-      #live-toast {
-        display: none;
-      }
-    }
-
     /* ============ cart drawer ============ */
     #cart-overlay {
       position: fixed;
@@ -2527,173 +2473,11 @@
           <button class="ftab" data-filter="bracelets">Bracelets</button>
         </div>
 
-        <div class="coll-grid" id="coll-grid-jewelry">
-
-          <div class="coll-card card-lg tilt" data-tilt data-category="rings">
-            <div class="tilt-inner">
-              <div class="media-box">
-                <span class="price-tag">₦15,000</span>
-                <span class="worn-badge">Worn look</span>
-                <img class="base"
-                  src="https://images.unsplash.com/photo-1677466891347-2ff8dad2f993?w=700&q=68&auto=format&fit=crop"
-                  alt="Ouroboros gold ring product shot" loading="lazy" decoding="async">
-                <img class="swap"
-                  src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=700&q=68&auto=format&fit=crop"
-                  alt="Gold ring worn on hand" loading="lazy" decoding="async">
-                <span class="glint"></span>
-                <div class="card-copy">
-                  <div class="txt">
-                    <h3>Ouroboros Ring</h3>
-                    <p>Stacked or solo, sized to fit the story you're telling that day.</p>
-                  </div>
-                  <div class="card-actions">
-                    <button class="add-bag" data-id="ring-ouroboros" data-name="Ouroboros Ring" data-price="15000"
-                      data-img="https://images.unsplash.com/photo-1677466891347-2ff8dad2f993?w=200&q=80&auto=format&fit=crop">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M6 8h12l-1 12H7L6 8Z" />
-                        <path d="M9 8V6a3 3 0 0 1 6 0v2" />
-                      </svg> Add to bag
-                    </button>
-                    <a class="quick-chat"
-                      href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!%20I%27d%20like%20to%20order%20the%20Ouroboros%20Ring."
-                      target="_blank" rel="noopener">Chat instead</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="coll-card card-md tilt" data-tilt data-category="necklaces">
-            <div class="tilt-inner">
-              <div class="media-box">
-                <span class="price-tag">₦25,000</span>
-                <span class="worn-badge">Worn look</span>
-                <img class="base"
-                  src="https://images.unsplash.com/photo-1761211106346-939cb32005d7?w=700&q=68&auto=format&fit=crop"
-                  alt="Heart pendant chain flatlay" loading="lazy" decoding="async">
-                <img class="swap"
-                  src="https://images.unsplash.com/photo-1602751584547-8c62ae5468da?w=700&q=68&auto=format&fit=crop"
-                  alt="Gold necklace worn on neck" loading="lazy" decoding="async">
-                <span class="glint"></span>
-                <div class="card-copy">
-                  <div class="txt">
-                    <h3>Heart Pendant Chain</h3>
-                    <p>Layer three or wear one. Either way, it catches light first.</p>
-                  </div>
-                  <div class="card-actions">
-                    <button class="add-bag" data-id="necklace-heart" data-name="Heart Pendant Chain" data-price="25000"
-                      data-img="https://images.unsplash.com/photo-1761211106346-939cb32005d7?w=200&q=80&auto=format&fit=crop">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M6 8h12l-1 12H7L6 8Z" />
-                        <path d="M9 8V6a3 3 0 0 1 6 0v2" />
-                      </svg> Add to bag
-                    </button>
-                    <a class="quick-chat"
-                      href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!%20I%27d%20like%20to%20order%20the%20Heart%20Pendant%20Chain."
-                      target="_blank" rel="noopener">Chat instead</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="coll-card card-sm tilt" data-tilt data-category="earrings">
-            <div class="tilt-inner">
-              <div class="media-box">
-                <span class="price-tag">₦12,000</span>
-                <span class="worn-badge">Worn look</span>
-                <img class="base"
-                  src="https://images.unsplash.com/photo-1630019852942-f89202989a59?w=560&q=68&auto=format&fit=crop"
-                  alt="Gold hoop earrings product shot" loading="lazy" decoding="async">
-                <img class="swap"
-                  src="https://images.unsplash.com/photo-1596107034181-9f168717f1ee?w=560&q=68&auto=format&fit=crop"
-                  alt="Gold hoops worn on ear" loading="lazy" decoding="async">
-                <span class="glint"></span>
-                <div class="card-copy">
-                  <div class="txt">
-                    <h3>Gold Hoops</h3>
-                    <p>Hoops with weight, studs with attitude.</p>
-                  </div>
-                  <div class="card-actions">
-                    <button class="add-bag" data-id="earrings-hoops" data-name="Gold Hoops" data-price="12000"
-                      data-img="https://images.unsplash.com/photo-1630019852942-f89202989a59?w=200&q=80&auto=format&fit=crop">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M6 8h12l-1 12H7L6 8Z" />
-                        <path d="M9 8V6a3 3 0 0 1 6 0v2" />
-                      </svg> Add
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="coll-card card-sm tilt" data-tilt data-category="bracelets">
-            <div class="tilt-inner">
-              <div class="media-box">
-                <span class="price-tag">₦18,000</span>
-                <span class="worn-badge">Worn look</span>
-                <img class="base"
-                  src="https://images.unsplash.com/photo-1611955167811-4711904bb9f8?w=560&q=68&auto=format&fit=crop"
-                  alt="Gold bangles product shot" loading="lazy" decoding="async">
-                <img class="swap"
-                  src="https://images.unsplash.com/photo-1583315528236-b893494a35ee?w=560&q=68&auto=format&fit=crop"
-                  alt="Gold bracelets worn on wrist" loading="lazy" decoding="async">
-                <span class="glint"></span>
-                <div class="card-copy">
-                  <div class="txt">
-                    <h3>Layered Bangles</h3>
-                    <p>Quiet metal, loud confidence.</p>
-                  </div>
-                  <div class="card-actions">
-                    <button class="add-bag" data-id="bracelet-layered" data-name="Layered Bangles" data-price="18000"
-                      data-img="https://images.unsplash.com/photo-1611955167811-4711904bb9f8?w=200&q=80&auto=format&fit=crop">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M6 8h12l-1 12H7L6 8Z" />
-                        <path d="M9 8V6a3 3 0 0 1 6 0v2" />
-                      </svg> Add
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="coll-card card-lg tilt" data-tilt data-category="rings">
-            <div class="tilt-inner">
-              <div class="media-box">
-                <span class="price-tag">₦16,500</span>
-                <span class="worn-badge">Worn look</span>
-                <img class="base"
-                  src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=700&q=68&auto=format&fit=crop"
-                  alt="Signet ring product shot" loading="lazy" decoding="async">
-                <img class="swap"
-                  src="https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?w=700&q=68&auto=format&fit=crop"
-                  alt="Signet ring worn on hand" loading="lazy" decoding="async">
-                <span class="glint"></span>
-                <div class="card-copy">
-                  <div class="txt">
-                    <h3>Signet Statement Ring</h3>
-                    <p>The one ring that makes the rest of the stack make sense.</p>
-                  </div>
-                  <div class="card-actions">
-                    <button class="add-bag" data-id="ring-signet" data-name="Signet Statement Ring" data-price="16500"
-                      data-img="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=200&q=80&auto=format&fit=crop">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M6 8h12l-1 12H7L6 8Z" />
-                        <path d="M9 8V6a3 3 0 0 1 6 0v2" />
-                      </svg> Add to bag
-                    </button>
-                    <a class="quick-chat"
-                      href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!%20I%27d%20like%20to%20order%20the%20Signet%20Statement%20Ring."
-                      target="_blank" rel="noopener">Chat instead</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
+        <!-- Cards below are generated by JS from the PRODUCTS_JEWELRY array
+             near the top of the <script> at the bottom of this file. To add
+             a product, add one object to that array — you don't touch this
+             div. -->
+        <div class="coll-grid" id="coll-grid-jewelry"></div>
       </div>
     </section>
 
@@ -2774,108 +2558,11 @@
           <button class="ftab" data-filter="round">Round Retro</button>
         </div>
 
-        <div class="coll-grid" id="coll-grid-shades">
-
-          <div class="coll-card card-lg tilt" data-tilt data-category="aviator">
-            <div class="tilt-inner">
-              <div class="media-box">
-                <span class="price-tag">₦20,000</span>
-                <span class="worn-badge">Worn look</span>
-                <img class="base"
-                  src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=700&q=68&auto=format&fit=crop"
-                  alt="Aviator shades product shot" loading="lazy" decoding="async">
-                <img class="swap"
-                  src="https://images.unsplash.com/photo-1621573433675-3f6cd431a255?w=700&q=68&auto=format&fit=crop"
-                  alt="Aviator shades worn" loading="lazy" decoding="async">
-                <span class="glint"></span>
-                <div class="card-copy">
-                  <div class="txt">
-                    <h3>Aviator Shades</h3>
-                    <p>Statement frames for indoors and out — the everyday flex.</p>
-                  </div>
-                  <div class="card-actions">
-                    <button class="add-bag" data-id="shades-aviator" data-name="Aviator Shades" data-price="20000"
-                      data-img="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=200&q=80&auto=format&fit=crop">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M6 8h12l-1 12H7L6 8Z" />
-                        <path d="M9 8V6a3 3 0 0 1 6 0v2" />
-                      </svg> Add to bag
-                    </button>
-                    <a class="quick-chat"
-                      href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!%20I%27d%20like%20to%20see%20the%20Aviator%20Shades%20in%20stock."
-                      target="_blank" rel="noopener">Chat instead</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="coll-card card-md tilt" data-tilt data-category="cateye">
-            <div class="tilt-inner">
-              <div class="media-box">
-                <span class="price-tag">₦22,000</span>
-                <span class="worn-badge">Worn look</span>
-                <img class="base"
-                  src="https://images.unsplash.com/photo-1577803645773-f96470509666?w=700&q=68&auto=format&fit=crop"
-                  alt="Cat-eye shades product shot" loading="lazy" decoding="async">
-                <img class="swap"
-                  src="https://images.unsplash.com/photo-1590076215667-875d4ea4e0e8?w=700&q=68&auto=format&fit=crop"
-                  alt="Cat-eye shades worn" loading="lazy" decoding="async">
-                <span class="glint"></span>
-                <div class="card-copy">
-                  <div class="txt">
-                    <h3>Cat-Eye Shades</h3>
-                    <p>Sharp corners, softer light. Reads different in every photo.</p>
-                  </div>
-                  <div class="card-actions">
-                    <button class="add-bag" data-id="shades-cateye" data-name="Cat-Eye Shades" data-price="22000"
-                      data-img="https://images.unsplash.com/photo-1577803645773-f96470509666?w=200&q=80&auto=format&fit=crop">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M6 8h12l-1 12H7L6 8Z" />
-                        <path d="M9 8V6a3 3 0 0 1 6 0v2" />
-                      </svg> Add to bag
-                    </button>
-                    <a class="quick-chat"
-                      href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!%20I%27d%20like%20to%20see%20the%20Cat-Eye%20Shades%20in%20stock."
-                      target="_blank" rel="noopener">Chat instead</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="coll-card card-sm tilt" data-tilt data-category="round">
-            <div class="tilt-inner">
-              <div class="media-box">
-                <span class="price-tag">₦19,000</span>
-                <span class="worn-badge">Worn look</span>
-                <img class="base"
-                  src="https://images.unsplash.com/photo-1508296695146-257a814070b4?w=560&q=68&auto=format&fit=crop"
-                  alt="Round retro shades product shot" loading="lazy" decoding="async">
-                <img class="swap"
-                  src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=560&q=68&auto=format&fit=crop"
-                  alt="Round retro shades worn" loading="lazy" decoding="async">
-                <span class="glint"></span>
-                <div class="card-copy">
-                  <div class="txt">
-                    <h3>Round Retro Shades</h3>
-                    <p>Vintage curve, gold-wrapped edge.</p>
-                  </div>
-                  <div class="card-actions">
-                    <button class="add-bag" data-id="shades-round" data-name="Round Retro Shades" data-price="19000"
-                      data-img="https://images.unsplash.com/photo-1508296695146-257a814070b4?w=200&q=80&auto=format&fit=crop">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M6 8h12l-1 12H7L6 8Z" />
-                        <path d="M9 8V6a3 3 0 0 1 6 0v2" />
-                      </svg> Add
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
+        <!-- Cards below are generated by JS from the PRODUCTS_SHADES array
+             near the top of the <script> at the bottom of this file. To add
+             a pair of shades, add one object to that array — you don't
+             touch this div. -->
+        <div class="coll-grid" id="coll-grid-shades"></div>
       </div>
     </section>
 
@@ -3107,15 +2794,6 @@
     <span>Chat on WhatsApp</span>
   </a>
 
-  <div id="live-toast">
-    <span class="dotlive"></span>
-    <div class="txt">
-      <b id="lt-title">Amaka just messaged about the Aurora Hoops</b>
-      <span id="lt-sub">Lagos · moments ago</span>
-      <span class="tiny">Rotating showcase — not a live order feed</span>
-    </div>
-  </div>
-
   <!-- ============ CART DRAWER ============ -->
   <div id="cart-overlay"></div>
   <aside id="cart-drawer">
@@ -3148,6 +2826,281 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
+    /* =========================================================
+       PRODUCT CATALOGUE — the one place you edit to add pieces
+       =========================================================
+       To add a product to a page, just add one object to the
+       matching array below. Nothing else on the page needs to
+       change — the grid, the "worn" hover swap, the price tag,
+       the filter tabs, the Add-to-bag button and the WhatsApp
+       checkout message all pick it up automatically, and the
+       grid re-flows cleanly no matter how many pieces you add.
+
+       Fields:
+         id        unique slug, used in the cart (e.g. "ring-halo")
+         name      shown on the card and in the WhatsApp message
+         desc      one short line under the name
+         category  must match one of the filter tab values above
+                    the grid (e.g. rings / necklaces / earrings /
+                    bracelets for jewelry; aviator / cateye / round
+                    for shades) — or add a new tab to match a new
+                    category
+         price     a plain number, in Naira (no commas/symbol)
+         img       product photo URL, no query string
+         imgWorn   "worn" hover photo URL, no query string
+                    (optional — omit or repeat img if you don't
+                    have a worn shot yet)
+         size      'lg' | 'md' | 'sm' — controls the card's footprint
+                    in the grid. Mix sizes for visual rhythm; 'sm'
+                    cards hide the "Chat instead" link automatically
+                    to save space, everything else still shows it.
+
+       Image sizing: photos are fetched from the URL you give plus
+       small width/quality parameters added automatically at render
+       time (?w=700&q=68 for the grid, ?w=200&q=80 for the cart
+       thumbnail) — so you don't need to pre-resize anything before
+       adding a new photo, and the page doesn't get heavier just
+       because the catalogue grows: images load lazily, only as a
+       visitor scrolls near them.
+    */
+    const PRODUCTS_JEWELRY = [
+      {
+        id: 'ring-ouroboros', name: 'Ouroboros Ring', category: 'rings', price: 15000, size: 'lg',
+        desc: "Stacked or solo, sized to fit the story you're telling that day.",
+        img: 'https://images.unsplash.com/photo-1677466891347-2ff8dad2f993',
+        imgWorn: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a'
+      },
+      {
+        id: 'necklace-heart', name: '5 Shape Pendant Necklace', category: 'necklaces', price: 22000, size: 'md',
+        desc: 'A five-shape pendant, layered or worn alone. Either way, it catches light first.',
+        img: 'images/necklace_01.jpg',
+        imgWorn: 'https://images.unsplash.com/photo-1602751584547-8c62ae5468da'
+      },
+      {
+        id: 'necklace-heart', name: 'Luna Bloom Necklace', category: 'necklaces', price: 9000, size: 'md',
+        desc: 'A moonlit bloom pendant with a delicate, graceful finish.',
+        img: 'images/necklace_04.jpg',
+      },
+
+      {
+        id: 'necklace-heart', name: 'Clover Silver Set', category: 'necklaces', price: 40000, size: 'md',
+        desc: 'A polished clover-inspired set with a sleek silver finish and timeless elegance.',
+        img: 'images/necklace_08.jpg',
+      },
+
+      {
+        id: 'necklace-heart', name: 'The Coquette Necklace', category: 'necklaces', price: 25000, size: 'md',
+        desc: 'A charming statement necklace with a delicate, flirty touch and feminine allure.',
+        img: 'images/necklace_09.jpg',
+      },
+
+      {
+        id: 'necklace-heart', name: 'The Èlan Pearl Necklace', category: 'necklaces', price: 9000, size: 'md',
+        desc: 'A refined pearl necklace with effortless elegance and a graceful, polished finish.',
+        img: 'images/necklace_10.jpg',
+      },
+
+      {
+        id: 'necklace-heart', name: 'Silver Tulip Necklace', category: 'necklaces', price: 30000, size: 'md',
+        desc: 'A sculpted silver tulip pendant with graceful curves and a striking botanical charm.',
+        img: 'images/silver_tullip.jpg',
+      },
+
+      {
+        id: 'necklace-heart', name: 'The Lumière Set', category: 'necklaces', price: 40000, size: 'md',
+        desc: 'A radiant jewellery set designed to catch the light with effortless sophistication.',
+        img: 'images/lum.jpg',
+      },
+
+      {
+        id: 'necklace-heart', name: 'Dual Axis necklace', category: 'necklaces', price: 18000, size: 'md',
+        desc: 'A radiant jewellery set designed to catch the light with effortless sophistication.',
+        img: 'images/necklace_12.jpg',
+      },
+
+      {
+        id: 'necklace-heart', name: 'The Silver Twist', category: 'necklaces', price: 10000, size: 'md',
+        desc: 'A sleek twisted design with sculptural curves and a polished silver finish.',
+        img: 'images/necklace_13.jpg',
+      },
+
+      {
+        id: 'necklace-heart', name: 'The Rosette Necklace', category: 'necklaces', price: 14000, size: 'md',
+        desc: 'A refined rosette-inspired pendant with softly layered petals and timeless charm.',
+        img: 'images/necklace_05.jpg',
+      },
+      {
+        id: 'necklace-heart', name: 'Vintage Flower Piece Set', category: 'necklaces', price: 14500, size: 'md',
+        desc: 'A vintage-inspired floral set with intricate blooms and an old-world romantic charm.',
+        img: 'images/necklace_06.jpg',
+      },
+      {
+        id: 'necklace-heart', name: 'Clover Pearl Necklace', category: 'necklaces', price: 9500, size: 'md',
+        desc: 'A clover-inspired pendant accented with pearls for a timeless, graceful finish.',
+        img: 'images/necklace_02.jpg',
+      },
+      {
+        id: 'necklace-heart', name: 'Layered necklace ', category: 'necklaces', price: 18000, size: 'md',
+        desc: 'A clover-inspired pendant accented with pearls for a timeless, graceful finish.',
+        img: 'images/necklace_03.jpg',
+      },
+      {
+        id: 'necklace-heart', name: 'Crystal Cross Necklace', category: 'necklaces', price: 8000, size: 'md',
+        desc: 'A delicate crystal cross pendant that adds a subtle sparkle and graceful finish.',
+        img: 'images/necklace_14.jpg',
+      },
+
+
+      {
+        id: 'earrings-hoops', name: 'Gold Hoops', category: 'earrings', price: 12000, size: 'sm',
+        desc: 'Hoops with weight, studs with attitude.',
+        img: 'https://images.unsplash.com/photo-1630019852942-f89202989a59',
+        imgWorn: 'https://images.unsplash.com/photo-1596107034181-9f168717f1ee'
+      },
+
+
+
+      {
+        id: 'bracelet-layered', name: 'Aurelia Bow Bracelet', category: 'bracelets', price: 10000, size: 'sm',
+        desc: 'Delicate bow bracelet, perfect for everyday elegance.',
+        img: 'images/bracelet_03.jpg',
+      },
+
+      {
+        id: 'bracelet-layered', name: 'Small gold ball bracelet', category: 'bracelets', price: 12000, size: 'sm',
+        desc: 'Available separately — ₦3,000 each (1–3); full stack: ₦12,000.',
+        img: 'images/bracelet_01.jpg',
+      },
+
+      {
+        id: 'bracelet-layered', name: 'Celeste Bloom Bracelet', category: 'bracelets', price: 10000, size: 'sm',
+        desc: 'Delicate floral bracelet with an elegant, feminine finish.',
+        img: 'images/bracelet_06.jpg',
+      },
+
+      {
+        id: 'bracelet-layered', name: 'The Gilded Stack', category: 'bracelets', price: 20000, size: 'sm',
+        desc: 'A rich layered stack with a lustrous finish and effortless golden allure.',
+        img: 'images/bracelet_07.jpg',
+      },
+
+      {
+        id: 'bracelet-layered', name: 'Hermes-rope bracelet ', category: 'bracelets', price: 8000, size: 'sm',
+        desc: 'Delicate floral bracelet with an elegant, feminine finish.',
+        img: 'images/bracelet_05.jpg',
+      },
+
+      {
+        id: 'bracelet-layered', name: 'The Fleur Cuff Bracelet', category: 'bracelets', price: 10000, size: 'sm',
+        desc: 'A sculpted floral cuff with graceful curves and a bold, feminine finish.',
+        img: 'images/bracelet_08.jpg',
+      },
+
+      {
+        id: 'bracelet-layered', name: 'The Golden Thread', category: 'bracelets', price: 10000, size: 'sm',
+        desc: 'A delicate golden weave with a refined finish and effortless, understated glow.',
+        img: 'images/bracelet_09.jpg',
+      },
+
+      {
+        id: 'bracelet-layered', name: 'Chunky Mesh Bracelet', category: 'bracelets', price: 9000, size: 'sm',
+        desc: 'A bold woven mesh design with a substantial feel and sleek, polished finish.',
+        img: 'images/bracelet_10.jpg',
+      },
+
+      {
+        id: 'bracelet-layered', name: 'Bold Chunky Bracelet', category: 'bracelets', price: 9000, size: 'sm',
+        desc: 'A statement-making chunky design with a strong silhouette and polished finish.',
+        img: 'images/bracelet_11.jpg',
+      },
+
+
+
+      {
+        id: 'bracelet-layered', name: 'Sculpted Cuff Bracelet', category: 'bracelets', price: 7000, size: 'sm',
+        desc: 'Bold sculpted cuff bracelet with a sleek, modern finish.',
+        img: 'images/bracelet_04.jpg',
+      },
+
+      {
+        id: 'bracelet-layered', name: 'Big gold ball bracelet stack ', category: 'bracelets', price: 15000, size: 'sm',
+        desc: 'Available separately — full stack: ₦15,000; individual items: ₦5,000 each (1–5).',
+        img: 'images/bracelet_02.jpg',
+      },
+      {
+        id: 'ring-signet', name: 'Signet Statement Ring', category: 'rings', price: 16500, size: 'lg',
+        desc: 'The one ring that makes the rest of the stack make sense.',
+        img: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e',
+        imgWorn: 'https://images.unsplash.com/photo-1543294001-f7cd5d7fb516'
+      },
+      // 👇 add more jewelry pieces here, same shape as above
+    ];
+
+    const PRODUCTS_SHADES = [
+      {
+        id: 'shades-aviator', name: 'Aviator Shades', category: 'aviator', price: 20000, size: 'lg',
+        desc: 'Statement frames for indoors and out — the everyday flex.',
+        img: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083',
+        imgWorn: 'https://images.unsplash.com/photo-1621573433675-3f6cd431a255'
+      },
+      {
+        id: 'shades-cateye', name: 'Cat-Eye Shades', category: 'cateye', price: 22000, size: 'md',
+        desc: 'Sharp corners, softer light. Reads different in every photo.',
+        img: 'https://images.unsplash.com/photo-1577803645773-f96470509666',
+        imgWorn: 'https://images.unsplash.com/photo-1590076215667-875d4ea4e0e8'
+      },
+      {
+        id: 'shades-round', name: 'Round Retro Shades', category: 'round', price: 19000, size: 'sm',
+        desc: 'Vintage curve, gold-wrapped edge.',
+        img: 'https://images.unsplash.com/photo-1508296695146-257a814070b4',
+        imgWorn: 'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a'
+      },
+      // 👇 add more shades here, same shape as above
+    ];
+
+    function waLink(text) {
+      return `https://wa.me/2349024098340?text=${encodeURIComponent(text)}`;
+    }
+
+    function productCardHTML(p) {
+      const worn = p.imgWorn || p.img;
+      const chat = p.size !== 'sm'
+        ? `<a class="quick-chat" href="${waLink("Hi Slaywithfis! I'd like to order the " + p.name + '.')}" target="_blank" rel="noopener">Chat instead</a>`
+        : '';
+      return `
+      <div class="coll-card card-${p.size} tilt" data-tilt data-category="${p.category}">
+        <div class="tilt-inner">
+          <div class="media-box">
+            <span class="price-tag">₦${p.price.toLocaleString('en-NG')}</span>
+            <span class="worn-badge">Worn look</span>
+            <img class="base" src="${p.img}?w=700&q=68&auto=format&fit=crop" alt="${p.name} product shot" loading="lazy" decoding="async">
+            <img class="swap" src="${worn}?w=700&q=68&auto=format&fit=crop" alt="${p.name} worn" loading="lazy" decoding="async">
+            <span class="glint"></span>
+            <div class="card-copy">
+              <div class="txt">
+                <h3>${p.name}</h3>
+                <p>${p.desc}</p>
+              </div>
+              <div class="card-actions">
+                <button class="add-bag" data-id="${p.id}" data-name="${p.name}" data-price="${p.price}" data-img="${p.img}?w=200&q=80&auto=format&fit=crop">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg> Add to bag
+                </button>
+                ${chat}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    }
+
+    function renderGrid(products, gridId) {
+      const grid = document.getElementById(gridId);
+      if (grid) grid.innerHTML = products.map(productCardHTML).join('');
+    }
+
+    renderGrid(PRODUCTS_JEWELRY, 'coll-grid-jewelry');
+    renderGrid(PRODUCTS_SHADES, 'coll-grid-shades');
+
     /* ---------- preloader ---------- */
     window.addEventListener('load', () => {
       setTimeout(() => document.getElementById('preloader').classList.add('done'), 500);
@@ -3231,28 +3184,6 @@
       const offset = (prog - 0.5) * 60;
       parallaxImg.style.transform = `translateY(${offset}px) scale(1.08)`;
     });
-
-    /* ---------- activity toast: a rotating showcase of past-style messages,
-       clearly labeled in the UI as not a live order feed ---------- */
-    const liveEvents = [
-      ["Amaka just messaged about the Aurora Hoops", "Lagos · moments ago"],
-      ["Ini reserved the Ouroboros Ring", "Abuja · moments ago"],
-      ["Zainab asked about the Aviator Shades", "Port Harcourt · moments ago"],
-      ["Blessing just followed on TikTok", "Ibadan · moments ago"],
-      ["Fatima messaged about the layered chain set", "Kano · moments ago"],
-    ];
-    let ltIndex = 0;
-    const liveToast = document.getElementById('live-toast');
-    const ltTitle = document.getElementById('lt-title');
-    const ltSub = document.getElementById('lt-sub');
-    function cycleToast() {
-      const [t, s] = liveEvents[ltIndex % liveEvents.length];
-      ltTitle.textContent = t; ltSub.textContent = s;
-      liveToast.classList.add('show');
-      setTimeout(() => liveToast.classList.remove('show'), 4600);
-      ltIndex++;
-    }
-    setTimeout(() => { cycleToast(); setInterval(cycleToast, 8000); }, 3200);
 
     /* =========================================================
        IMAGE FALLBACK — if a "worn" hover photo fails to load, fall
@@ -3381,11 +3312,15 @@
     ========================================================= */
     (function () {
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduced) return;
+      // Coarse-pointer (touch) devices don't fire mousemove in normal use,
+      // but skip explicitly too — no reason to wire this up on phones,
+      // which is where "system lag" complaints usually come from.
+      const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
+      if (reduced || coarsePointer) return;
       let lastSpawn = 0;
       window.addEventListener('mousemove', (e) => {
         const now = performance.now();
-        if (now - lastSpawn < 45) return;
+        if (now - lastSpawn < 70) return;
         lastSpawn = now;
         const s = document.createElement('div');
         s.className = 'cursor-spark';
@@ -3414,7 +3349,10 @@
     const checkoutBtn = document.getElementById('checkout-btn');
     const giftWrapCheckbox = document.getElementById('gift-wrap');
 
-    const SHADES_IDS = new Set(['shades-aviator', 'shades-cateye', 'shades-round']);
+    // Built from PRODUCTS_SHADES directly, so a new shade added to the
+    // catalogue above is automatically grouped under "SHADES" in the bag —
+    // no separate list to keep in sync.
+    const SHADES_IDS = new Set(PRODUCTS_SHADES.map(p => p.id));
 
     function formatNaira(n) { return '₦' + n.toLocaleString('en-NG'); }
 
@@ -3547,7 +3485,7 @@
       if (!canvas) return null;
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-      renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 100);
       camera.position.set(0, 0, 9);
@@ -3602,6 +3540,11 @@
 
       function animate() {
         requestAnimationFrame(animate);
+        // Skip all the work (not just the render call) when the tab is
+        // backgrounded or this scene's page isn't the one on screen —
+        // this is one of four WebGL scenes on the site, and there's no
+        // reason to spend GPU/CPU animating one nobody can see.
+        if (document.hidden || currentPage !== 'jewelry') return;
         if (!reduced) {
           ringGroup.rotation.y += 0.0038;
           ringGroup.rotation.x += 0.0012;
@@ -3625,7 +3568,7 @@
       const wrap = canvas.parentElement;
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-      renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
       camera.position.set(0, 0, 7);
@@ -3676,6 +3619,7 @@
 
       function animate() {
         requestAnimationFrame(animate);
+        if (document.hidden || currentPage !== 'jewelry') return;
         if (!reduced) { ring.rotation.z += (targetX * 0.2 - ring.rotation.z) * 0.03; }
         renderer.render(scene, camera);
       }
@@ -3719,7 +3663,7 @@
       if (!canvas) return;
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-      renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 100);
       camera.position.set(0, 0, 9);
@@ -3756,6 +3700,7 @@
 
       function animate() {
         requestAnimationFrame(animate);
+        if (document.hidden || currentPage !== 'shades') return;
         if (!reduced) { glasses.rotation.y += 0.0032; }
         glasses.rotation.z += (targetX * 0.3 - glasses.rotation.z) * 0.02;
         camera.position.x += (targetX * 1.1 - camera.position.x) * 0.03;
@@ -3786,7 +3731,7 @@
       if (!canvas || !wrap) return;
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-      renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
       camera.position.set(0, 0, 7.5);
@@ -3885,6 +3830,7 @@
 
       function animate(now) {
         requestAnimationFrame(animate);
+        if (document.hidden || currentPage !== 'shades') return;
         if (!assembled && assembleStart !== null) {
           const t = Math.min((now - assembleStart) / ASSEMBLE_MS, 1);
           setAssembly(t);

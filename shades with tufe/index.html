@@ -206,12 +206,6 @@
       gap: 20px;
     }
 
-    /* FIX: flex items refuse to shrink below their own content size unless
-     min-width is explicitly relaxed. Without this, on narrow phones the
-     logo + page-toggle + cart icon + hamburger row simply overflows its
-     container instead of shrinking, and because body has overflow-x:hidden
-     that overflow is invisible and unreachable — usually clipping the
-     hamburger (the last item in the row) off-screen entirely. */
     .logo,
     .nav-links,
     .nav-right {
@@ -468,36 +462,12 @@
     }
 
     @media (max-width:900px) {
-
-      /* FIX: previously this only hid the header's "Chat on WhatsApp"
-       pill below 420px, while the hamburger already appears below
-       900px. That left a 421px-900px gap (many phones in landscape,
-       small tablets, narrow windows) where the logo + page-toggle +
-       cart icon + this CTA + the hamburger all had to fit in one
-       non-wrapping row — they didn't, the row overflowed, and since
-       body has overflow-x:hidden the overflow (usually the hamburger
-       itself) was silently clipped off-screen instead of scrollable,
-       making the menu button effectively vanish on those widths.
-       Hiding this CTA at the same breakpoint the hamburger appears
-       removes the collision entirely. The WhatsApp CTA is still
-       reachable via the floating WhatsApp button and via its own
-       button inside the mobile menu, so nothing is lost. */
       .nav-cta {
         display: none;
       }
     }
 
     @media (max-width:480px) {
-
-      /* FIX: on genuinely narrow phones (Tecno Pop 10 and similar,
-       ~360px CSS width) the header row — logo + page-toggle + cart
-       icon + hamburger — still doesn't fit even with the WhatsApp CTA
-       gone above. Trim it down: drop the text riding alongside the
-       logo icon and the hamburger icon (icon-only hamburgers are a
-       completely standard, still fully tappable pattern), and tighten
-       paddings/gaps so the row's total width comfortably clears even
-       a 320px screen instead of overflowing and getting clipped by
-       body's overflow-x:hidden. */
       header nav.wrap {
         padding: 0 14px;
         gap: 8px;
@@ -545,10 +515,6 @@
       }
     }
 
-    /* ============ mobile menu overlay ============
-     Opening it hides the rest of the page's scroll (body-lock) and
-     covers the viewport, so it truly replaces content rather than
-     floating on top of a still-scrollable page. */
     body.menu-open {
       overflow: hidden;
     }
@@ -711,7 +677,6 @@
       color: var(--ivory-dim);
     }
 
-    /* ============ page fade transition ============ */
     .page-view {
       display: block;
     }
@@ -752,7 +717,6 @@
       }
     }
 
-    /* ============ hero (shared styles, two instances) ============ */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -941,7 +905,6 @@
       }
     }
 
-    /* ============ marquee ============ */
     .marquee-band {
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
@@ -990,7 +953,6 @@
       }
     }
 
-    /* ============ generic section ============ */
     section {
       padding: 130px 0;
       position: relative;
@@ -1044,7 +1006,6 @@
       transform: translateY(0);
     }
 
-    /* ============ manifesto ============ */
     #manifesto {
       background: var(--charcoal);
     }
@@ -1090,7 +1051,6 @@
       }
     }
 
-    /* ============ stats ============ */
     .stats-row {
       display: flex;
       gap: 60px;
@@ -1130,7 +1090,6 @@
       }
     }
 
-    /* ============ filter tabs ============ */
     .filter-tabs {
       display: flex;
       gap: 10px;
@@ -1178,14 +1137,10 @@
       }
     }
 
-    /* ============ collections ============ */
     .coll-grid {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       gap: 22px;
-      /* NEW: lets the grid pack cards of mixed sizes without leaving gaps
-         as more products are added — essential once the list isn't a
-         fixed, hand-tuned count of 5 or 3 anymore. */
       grid-auto-flow: dense;
     }
 
@@ -1280,6 +1235,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       transition: opacity .55s ease, transform .8s ease, filter .55s ease;
     }
 
@@ -1306,7 +1262,6 @@
       transform: scale(1.0);
     }
 
-    /* fallback: if the "worn" shot fails to load, keep showing the product photo with a gentle zoom instead of a blank/black swap */
     .coll-card.no-swap:hover .media-box img.swap {
       opacity: 0 !important;
     }
@@ -1316,7 +1271,6 @@
       transform: scale(1.05);
     }
 
-    /* lighter gradient so the "worn" photo actually reads on hover, not a dark-out */
     .media-box::after {
       content: '';
       position: absolute;
@@ -1355,7 +1309,6 @@
       display: none;
     }
 
-    /* glint sweep */
     .media-box .glint {
       content: '';
       position: absolute;
@@ -1461,9 +1414,6 @@
     }
 
     @media (max-width:640px) {
-
-      /* on touch devices hover states don't reliably fire, so always
-       show the worn badge/copy legibly and keep the gradient present */
       .media-box::after {
         opacity: .6;
       }
@@ -1473,7 +1423,6 @@
       }
     }
 
-    /* ============ shades studio (3D) ============ */
     .studio-section {
       background: linear-gradient(180deg, var(--void), var(--charcoal));
       overflow: hidden;
@@ -1559,8 +1508,6 @@
       }
     }
 
-    /* ============ assembly progress bar (time-based, triggered when the
-     shades canvas scrolls into view — no extra scroll space needed) ============ */
     .assemble-progress {
       position: absolute;
       left: 0;
@@ -1579,7 +1526,6 @@
       transition: width .05s linear;
     }
 
-    /* ============ editorial break ============ */
     #editorial {
       min-height: 78vh;
       position: relative;
@@ -1647,7 +1593,6 @@
       }
     }
 
-    /* ============ how to order ============ */
     #howto {
       background: var(--charcoal);
     }
@@ -1694,7 +1639,6 @@
       }
     }
 
-    /* ============ social strip ============ */
     #social {
       text-align: center;
     }
@@ -1769,7 +1713,6 @@
       }
     }
 
-    /* ============ testimonials marquee ============ */
     #love {
       background: var(--charcoal);
       overflow: hidden;
@@ -1827,7 +1770,6 @@
       }
     }
 
-    /* ============ contact / cta ============ */
     #contact {
       text-align: center;
       background:
@@ -1862,7 +1804,6 @@
       }
     }
 
-    /* ============ footer ============ */
     footer {
       border-top: 1px solid var(--line);
       padding: 70px 0 34px;
@@ -1940,7 +1881,6 @@
       }
     }
 
-    /* ============ whatsapp fab ============ */
     #wa-fab {
       position: fixed;
       bottom: 26px;
@@ -1996,7 +1936,6 @@
       }
     }
 
-    /* ============ cart drawer ============ */
     #cart-overlay {
       position: fixed;
       inset: 0;
@@ -2239,7 +2178,6 @@
       }
     }
 
-    /* sparkle burst */
     .spark {
       position: fixed;
       z-index: 900;
@@ -2329,7 +2267,6 @@
     </nav>
   </header>
 
-  <!-- ============ MOBILE MENU (full-screen, replaces content while open) ============ -->
   <div id="mobile-menu" aria-hidden="true">
     <div class="mm-head">
       <div class="logo">
@@ -2394,9 +2331,6 @@
 
   <div id="top"></div>
 
-  <!-- ============================================================ -->
-  <!-- JEWELRY PAGE -->
-  <!-- ============================================================ -->
   <div class="page-view" id="page-jewelry">
 
     <section class="hero" id="hero-jewelry">
@@ -2473,10 +2407,6 @@
           <button class="ftab" data-filter="bracelets">Bracelets</button>
         </div>
 
-        <!-- Cards below are generated by JS from the PRODUCTS_JEWELRY array
-             near the top of the <script> at the bottom of this file. To add
-             a product, add one object to that array — you don't touch this
-             div. -->
         <div class="coll-grid" id="coll-grid-jewelry"></div>
       </div>
     </section>
@@ -2510,9 +2440,6 @@
 
   </div>
 
-  <!-- ============================================================ -->
-  <!-- SHADES PAGE -->
-  <!-- ============================================================ -->
   <div class="page-view" id="page-shades" hidden>
 
     <section class="hero" id="hero-shades">
@@ -2558,10 +2485,6 @@
           <button class="ftab" data-filter="round">Round Retro</button>
         </div>
 
-        <!-- Cards below are generated by JS from the PRODUCTS_SHADES array
-             near the top of the <script> at the bottom of this file. To add
-             a pair of shades, add one object to that array — you don't
-             touch this div. -->
         <div class="coll-grid" id="coll-grid-shades"></div>
       </div>
     </section>
@@ -2597,10 +2520,6 @@
     </section>
 
   </div>
-
-  <!-- ============================================================ -->
-  <!-- SHARED SECTIONS -->
-  <!-- ============================================================ -->
 
   <section id="editorial">
     <img class="parallax-img" id="parallaxImg"
@@ -2794,7 +2713,6 @@
     <span>Chat on WhatsApp</span>
   </a>
 
-  <!-- ============ CART DRAWER ============ -->
   <div id="cart-overlay"></div>
   <aside id="cart-drawer">
     <div class="cart-head">
@@ -2826,49 +2744,11 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script>
-    /* =========================================================
-       PRODUCT CATALOGUE — the one place you edit to add pieces
-       =========================================================
-       To add a product to a page, just add one object to the
-       matching array below. Nothing else on the page needs to
-       change — the grid, the "worn" hover swap, the price tag,
-       the filter tabs, the Add-to-bag button and the WhatsApp
-       checkout message all pick it up automatically, and the
-       grid re-flows cleanly no matter how many pieces you add.
-
-       Fields:
-         id        unique slug, used in the cart (e.g. "ring-halo")
-         name      shown on the card and in the WhatsApp message
-         desc      one short line under the name
-         category  must match one of the filter tab values above
-                    the grid (e.g. rings / necklaces / earrings /
-                    bracelets for jewelry; aviator / cateye / round
-                    for shades) — or add a new tab to match a new
-                    category
-         price     a plain number, in Naira (no commas/symbol)
-         img       product photo URL, no query string
-         imgWorn   "worn" hover photo URL, no query string
-                    (optional — omit or repeat img if you don't
-                    have a worn shot yet)
-         size      'lg' | 'md' | 'sm' — controls the card's footprint
-                    in the grid. Mix sizes for visual rhythm; 'sm'
-                    cards hide the "Chat instead" link automatically
-                    to save space, everything else still shows it.
-
-       Image sizing: photos are fetched from the URL you give plus
-       small width/quality parameters added automatically at render
-       time (?w=700&q=68 for the grid, ?w=200&q=80 for the cart
-       thumbnail) — so you don't need to pre-resize anything before
-       adding a new photo, and the page doesn't get heavier just
-       because the catalogue grows: images load lazily, only as a
-       visitor scrolls near them.
-    */
     const PRODUCTS_JEWELRY = [
       {
-        id: 'ring-ouroboros', name: 'Ouroboros Ring', category: 'rings', price: 15000, size: 'lg',
-        desc: "Stacked or solo, sized to fit the story you're telling that day.",
-        img: 'https://images.unsplash.com/photo-1677466891347-2ff8dad2f993',
-        imgWorn: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a'
+        id: 'ring-signet', name: 'Noir signet ring', category: 'rings', price: 6000, size: 'lg',
+        desc: 'The one ring that makes the rest of the stack make sense.',
+        img: 'images/ring_01.jpg',
       },
       {
         id: 'necklace-heart', name: '5 Shape Pendant Necklace', category: 'necklaces', price: 22000, size: 'md',
@@ -2885,7 +2765,7 @@
       {
         id: 'necklace-heart', name: 'Clover Silver Set', category: 'necklaces', price: 40000, size: 'md',
         desc: 'A polished clover-inspired set with a sleek silver finish and timeless elegance.',
-        img: 'images/necklace_07.jpg',
+        img: 'images/necklace_17.jpg',
       },
 
       {
@@ -2927,7 +2807,7 @@
       {
         id: 'necklace-heart', name: 'The Rosette Necklace', category: 'necklaces', price: 14000, size: 'md',
         desc: 'A refined rosette-inspired pendant with softly layered petals and timeless charm.',
-        img: 'images/necklace_05.jpg',
+        img: 'images/rosette.jpg',
       },
       {
         id: 'necklace-heart', name: 'Vintage Flower Piece Set', category: 'necklaces', price: 14500, size: 'md',
@@ -2942,7 +2822,7 @@
       {
         id: 'necklace-heart', name: 'Layered necklace ', category: 'necklaces', price: 18000, size: 'md',
         desc: 'A clover-inspired pendant accented with pearls for a timeless, graceful finish.',
-        img: 'images/necklace_03.jpg',
+        img: 'images/necklace_16.jpg',
       },
       {
         id: 'necklace-heart', name: 'Crystal Cross Necklace', category: 'necklaces', price: 8000, size: 'md',
@@ -2975,7 +2855,7 @@
       {
         id: 'bracelet-layered', name: 'Celeste Bloom Bracelet', category: 'bracelets', price: 10000, size: 'sm',
         desc: 'Delicate floral bracelet with an elegant, feminine finish.',
-        img: 'images/bracelet_05.jpg',
+        img: 'images/bracelet_06.jpg',
       },
 
       {
@@ -2987,7 +2867,7 @@
       {
         id: 'bracelet-layered', name: 'Hermes-rope bracelet ', category: 'bracelets', price: 8000, size: 'sm',
         desc: 'Delicate floral bracelet with an elegant, feminine finish.',
-        img: 'images/bracelet_06.jpg',
+        img: 'images/bracelet_05.jpg',
       },
 
       {
@@ -3027,13 +2907,7 @@
         desc: 'Available separately — full stack: ₦15,000; individual items: ₦5,000 each (1–5).',
         img: 'images/bracelet_02.jpg',
       },
-      {
-        id: 'ring-signet', name: 'Signet Statement Ring', category: 'rings', price: 16500, size: 'lg',
-        desc: 'The one ring that makes the rest of the stack make sense.',
-        img: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e',
-        imgWorn: 'https://images.unsplash.com/photo-1543294001-f7cd5d7fb516'
-      },
-      // 👇 add more jewelry pieces here, same shape as above
+
     ];
 
     const PRODUCTS_SHADES = [
@@ -3055,7 +2929,6 @@
         img: 'https://images.unsplash.com/photo-1508296695146-257a814070b4',
         imgWorn: 'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a'
       },
-      // 👇 add more shades here, same shape as above
     ];
 
     function waLink(text) {
@@ -3064,6 +2937,7 @@
 
     function productCardHTML(p) {
       const worn = p.imgWorn || p.img;
+      const focus = p.focus || '50% 50%';
       const chat = p.size !== 'sm'
         ? `<a class="quick-chat" href="${waLink("Hi Slaywithfis! I'd like to order the " + p.name + '.')}" target="_blank" rel="noopener">Chat instead</a>`
         : '';
@@ -3073,8 +2947,8 @@
           <div class="media-box">
             <span class="price-tag">₦${p.price.toLocaleString('en-NG')}</span>
             <span class="worn-badge">Worn look</span>
-            <img class="base" src="${p.img}?w=700&q=68&auto=format&fit=crop" alt="${p.name} product shot" loading="lazy" decoding="async">
-            <img class="swap" src="${worn}?w=700&q=68&auto=format&fit=crop" alt="${p.name} worn" loading="lazy" decoding="async">
+            <img class="base" style="object-position:${focus}" src="${p.img}?w=700&q=68&auto=format&fit=crop" alt="${p.name} product shot" loading="lazy" decoding="async">
+            <img class="swap" style="object-position:${focus}" src="${worn}?w=700&q=68&auto=format&fit=crop" alt="${p.name} worn" loading="lazy" decoding="async">
             <span class="glint"></span>
             <div class="card-copy">
               <div class="txt">
@@ -3101,13 +2975,11 @@
     renderGrid(PRODUCTS_JEWELRY, 'coll-grid-jewelry');
     renderGrid(PRODUCTS_SHADES, 'coll-grid-shades');
 
-    /* ---------- preloader ---------- */
     window.addEventListener('load', () => {
       setTimeout(() => document.getElementById('preloader').classList.add('done'), 500);
     });
     document.getElementById('yr').textContent = new Date().getFullYear();
 
-    /* ---------- magnetic buttons ---------- */
     document.querySelectorAll('.magnetic').forEach(el => {
       el.addEventListener('mousemove', e => {
         const r = el.getBoundingClientRect();
@@ -3118,17 +2990,14 @@
       el.addEventListener('mouseleave', () => { el.style.transform = ''; });
     });
 
-    /* ---------- header on scroll ---------- */
     const header = document.getElementById('site-header');
     window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 40); });
 
-    /* ---------- scroll reveal ---------- */
     const io = new IntersectionObserver((entries) => {
       entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in-view'); io.unobserve(en.target); } });
     }, { threshold: 0.18 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-    /* ---------- counters ---------- */
     const cio = new IntersectionObserver((entries) => {
       entries.forEach(en => {
         if (en.isIntersecting) {
@@ -3145,7 +3014,6 @@
     }, { threshold: 0.4 });
     document.querySelectorAll('.count').forEach(c => cio.observe(c));
 
-    /* ---------- tilt cards ---------- */
     document.querySelectorAll('[data-tilt]').forEach(card => {
       const inner = card.querySelector('.tilt-inner');
       card.addEventListener('mousemove', e => {
@@ -3157,7 +3025,6 @@
       card.addEventListener('mouseleave', () => { inner.style.transform = ''; });
     });
 
-    /* ---------- filter tabs (scoped per page's tab group) ---------- */
     document.querySelectorAll('.filter-tabs').forEach(group => {
       const scope = group.dataset.tabs;
       const grid = document.getElementById('coll-grid-' + scope);
@@ -3175,7 +3042,6 @@
       });
     });
 
-    /* ---------- editorial parallax ---------- */
     const parallaxImg = document.getElementById('parallaxImg');
     const editorialSection = document.getElementById('editorial');
     window.addEventListener('scroll', () => {
@@ -3185,12 +3051,6 @@
       parallaxImg.style.transform = `translateY(${offset}px) scale(1.08)`;
     });
 
-    /* =========================================================
-       IMAGE FALLBACK — if a "worn" hover photo fails to load, fall
-       back to a subtle zoom on the product shot instead of a black
-       box. If the base product photo itself fails, swap in a soft
-       gradient placeholder rather than solid black.
-    ========================================================= */
     document.querySelectorAll('.media-box').forEach(box => {
       const base = box.querySelector('img.base');
       const swap = box.querySelector('img.swap');
@@ -3209,9 +3069,6 @@
       }
     });
 
-    /* =========================================================
-       PAGE SWITCHER (Jewelry <-> Shades)
-    ========================================================= */
     const pageToggle = document.getElementById('page-toggle');
     const pageJewelry = document.getElementById('page-jewelry');
     const pageShades = document.getElementById('page-shades');
@@ -3228,21 +3085,11 @@
         outEl.classList.remove('page-fade-out');
         inEl.hidden = false;
 
-        /* FIX: canvases inside this page were sized while it was `hidden`
-           (display:none -> clientWidth/clientHeight === 0), so their Three.js
-           renderers/cameras never got real dimensions and stayed stuck at
-           0x0 (or NaN aspect). Each scene already listens for the window
-           'resize' event, so firing one now — right after the page becomes
-           visible and has real layout — makes every canvas on this page
-           (including the shades assembly and its hero frame) re-measure
-           itself and render correctly and immediately, instead of only
-           working after the user happens to resize their browser window. */
         window.dispatchEvent(new Event('resize'));
 
         inEl.classList.add('page-fade-in');
         setTimeout(() => {
           inEl.classList.remove('page-fade-in');
-          // second pass in case webfont/layout settling shifted sizes
           window.dispatchEvent(new Event('resize'));
         }, 480);
         if (scrollTop) window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
@@ -3262,15 +3109,6 @@
       a.addEventListener('click', (e) => { e.preventDefault(); goToPage(a.dataset.pageLink, true); closeMobileMenu(); });
     });
 
-    /* =========================================================
-       MOBILE MENU (hamburger)
-       Opens a full-screen panel that visually replaces the page
-       content (rest of the page is inert/scroll-locked underneath),
-       with its own close (✕) button plus the hamburger itself
-       morphing into a close icon while open. Closes on: close button,
-       Escape key, clicking a link/anchor inside, or resizing past
-       the mobile breakpoint.
-    ========================================================= */
     const burgerBtn = document.getElementById('burger-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const mmClose = document.getElementById('mm-close');
@@ -3307,14 +3145,8 @@
     });
     window.addEventListener('resize', () => { if (window.innerWidth > 900) closeMobileMenu(); });
 
-    /* =========================================================
-       CURSOR SPARKLE TRAIL
-    ========================================================= */
     (function () {
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      // Coarse-pointer (touch) devices don't fire mousemove in normal use,
-      // but skip explicitly too — no reason to wire this up on phones,
-      // which is where "system lag" complaints usually come from.
       const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
       if (reduced || coarsePointer) return;
       let lastSpawn = 0;
@@ -3334,9 +3166,6 @@
       });
     })();
 
-    /* =========================================================
-       CART SYSTEM (shared across both pages)
-    ========================================================= */
     let cart = [];
     const WA_NUMBER = "2349024098340";
     const cartToggle = document.getElementById('cart-toggle');
@@ -3349,9 +3178,6 @@
     const checkoutBtn = document.getElementById('checkout-btn');
     const giftWrapCheckbox = document.getElementById('gift-wrap');
 
-    // Built from PRODUCTS_SHADES directly, so a new shade added to the
-    // catalogue above is automatically grouped under "SHADES" in the bag —
-    // no separate list to keep in sync.
     const SHADES_IDS = new Set(PRODUCTS_SHADES.map(p => p.id));
 
     function formatNaira(n) { return '₦' + n.toLocaleString('en-NG'); }
@@ -3475,11 +3301,6 @@
       });
     });
 
-    /* =========================================================
-       THREE.JS — JEWELRY HERO RING
-       (gem material trimmed to properties this three.js build
-       actually supports — no more console warnings)
-    ========================================================= */
     function makeRingScene(canvasId, xOffset) {
       const canvas = document.getElementById(canvasId);
       if (!canvas) return null;
@@ -3540,10 +3361,6 @@
 
       function animate() {
         requestAnimationFrame(animate);
-        // Skip all the work (not just the render call) when the tab is
-        // backgrounded or this scene's page isn't the one on screen —
-        // this is one of four WebGL scenes on the site, and there's no
-        // reason to spend GPU/CPU animating one nobody can see.
         if (document.hidden || currentPage !== 'jewelry') return;
         if (!reduced) {
           ringGroup.rotation.y += 0.0038;
@@ -3559,9 +3376,6 @@
     }
     makeRingScene('hero-canvas-jewelry', 2.3);
 
-    /* =========================================================
-       THREE.JS — SECOND RING (rotates with scroll, in the ring studio)
-    ========================================================= */
     (function () {
       const canvas = document.getElementById('ring-canvas');
       if (!canvas) return;
@@ -3626,20 +3440,13 @@
       animate();
     })();
 
-    /* =========================================================
-       THREE.JS — SHADES HERO (big frame, offset to the side so it
-       never sits under the headline). Given its own bronze/amber
-       material palette, distinct from the jewelry gold, so shades
-       read as their own product line and the tinted lenses look
-       more like real sunglass glass than a flat black disc.
-    ========================================================= */
     function buildShadesGroup(frameMat, lensMat, lensRadius, lensDepth) {
       const glasses = new THREE.Group();
       function makeLens(x) {
         const g = new THREE.Group();
         const lensGeo = new THREE.CylinderGeometry(lensRadius, lensRadius, lensDepth, 48);
         const lens = new THREE.Mesh(lensGeo, lensMat);
-        lens.rotation.x = Math.PI / 2; // real thickness so it never goes edge-on invisible
+        lens.rotation.x = Math.PI / 2;
         g.add(lens);
         g.add(new THREE.Mesh(new THREE.TorusGeometry(lensRadius, lensRadius * 0.07, 16, 48), frameMat));
         g.position.x = x;
@@ -3687,7 +3494,6 @@
       });
 
       const glasses = buildShadesGroup(frameMat, lensMat, 1.15, 0.14);
-      // parked well to the right, clear of the left-aligned headline text
       const restX = 2.7;
       glasses.position.x = restX;
       scene.add(glasses);
@@ -3712,17 +3518,6 @@
     }
     makeShadesHeroScene('hero-canvas-shades');
 
-    /* =========================================================
-       THREE.JS — SHADES ASSEMBLY (motion graphic, triggered on view)
-    
-       No scroll-distance trick here: an IntersectionObserver fires the
-       moment the canvas is ~25% into the viewport, and the assembly
-       plays out over a fixed ~1.5s of real time using requestAnimationFrame
-       timestamps. That means it finishes quickly regardless of how fast
-       someone scrolls — by the time the section is in front of them it's
-       already assembling (or done), never stuck waiting on more scroll,
-       and it needs no extra page height to work.
-    ========================================================= */
     (function () {
       const canvas = document.getElementById('shades-canvas');
       const wrap = document.getElementById('shades-canvas-wrap');
@@ -3749,7 +3544,6 @@
       const key = new THREE.PointLight(0xe9d3a3, 3, 30); key.position.set(5, 4, 7); scene.add(key);
       const fill = new THREE.PointLight(0xe23f8f, 1.6, 30); fill.position.set(-5, -2, 5); scene.add(fill);
 
-      // bronze/amber palette — distinct from the jewelry ring's champagne gold
       const frameMat = new THREE.MeshStandardMaterial({ color: 0xa8703f, metalness: 0.9, roughness: 0.3 });
       const lensMat = new THREE.MeshPhysicalMaterial({
         color: 0xb5652c, metalness: 0.2, roughness: 0.12,
@@ -3797,12 +3591,12 @@
       addPart(new THREE.Mesh(new THREE.SphereGeometry(0.06, 10, 10), padMat), V(2.5, 0, -1.35), E(0, 0, 0), V(7.2, -4.4, 5.2), E(0, 0, 0));
 
       const tmp = new THREE.Vector3();
-      const ASSEMBLE_MS = reduced ? 1 : 1500; // real time for the assembly, not scroll distance
+      const ASSEMBLE_MS = reduced ? 1 : 1500;
       let assembleStart = null;
       let assembled = reduced;
 
       function setAssembly(t) {
-        const eased = t * t * (3 - 2 * t); // smoothstep
+        const eased = t * t * (3 - 2 * t);
         parts.forEach(p => {
           tmp.lerpVectors(p.userData.explodedPos, p.userData.finalPos, eased);
           p.position.copy(tmp);
@@ -3815,7 +3609,6 @@
       }
       setAssembly(reduced ? 1 : 0);
 
-      // fire the moment the canvas is meaningfully in view — no scroll distance required
       const io2 = new IntersectionObserver((entries) => {
         entries.forEach(en => {
           if (en.isIntersecting && assembleStart === null) {

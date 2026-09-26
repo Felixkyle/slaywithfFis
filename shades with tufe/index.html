@@ -269,7 +269,7 @@
       top: 4px;
       left: 4px;
       height: calc(100% - 8px);
-      width: calc(50% - 4px);
+      width: calc(33.333% - 4px);
       background: var(--champagne-2);
       border-radius: 24px;
       z-index: 1;
@@ -278,6 +278,10 @@
 
     .page-toggle.on-shades .glider {
       transform: translateX(100%);
+    }
+
+    .page-toggle.on-watches .glider {
+      transform: translateX(200%);
     }
 
     .nav-anchors {
@@ -583,7 +587,7 @@
       border-radius: 30px;
       padding: 4px;
       position: relative;
-      max-width: 320px;
+      max-width: 380px;
       margin-bottom: 44px;
     }
 
@@ -608,7 +612,7 @@
       top: 4px;
       left: 4px;
       height: calc(100% - 8px);
-      width: calc(50% - 4px);
+      width: calc(33.333% - 4px);
       background: var(--champagne-2);
       border-radius: 24px;
       z-index: 1;
@@ -617,6 +621,10 @@
 
     .mm-toggle.on-shades .glider {
       transform: translateX(100%);
+    }
+
+    .mm-toggle.on-watches .glider {
+      transform: translateX(200%);
     }
 
     .mm-links {
@@ -736,6 +744,13 @@
       background:
         radial-gradient(ellipse 70% 55% at 20% 30%, rgba(201, 167, 105, 0.16), transparent 60%),
         radial-gradient(ellipse 60% 60% at 85% 80%, rgba(226, 63, 143, 0.13), transparent 60%),
+        var(--void);
+    }
+
+    #hero-watches {
+      background:
+        radial-gradient(ellipse 70% 55% at 30% 25%, rgba(201, 167, 105, 0.18), transparent 60%),
+        radial-gradient(ellipse 60% 60% at 80% 85%, rgba(226, 63, 143, 0.10), transparent 60%),
         var(--void);
     }
 
@@ -2242,6 +2257,7 @@
           <div class="glider"></div>
           <a href="#top" data-page="jewelry" class="active">Jewelry</a>
           <a href="#top" data-page="shades">Shades</a>
+          <a href="#top" data-page="watches">Watches</a>
         </div>
         <div class="nav-anchors">
           <a href="#howto">How to Order</a>
@@ -2289,6 +2305,7 @@
         <div class="glider"></div>
         <a href="#top" data-page="jewelry" class="active">Jewelry</a>
         <a href="#top" data-page="shades">Shades</a>
+        <a href="#top" data-page="watches">Watches</a>
       </div>
       <nav class="mm-links">
         <a href="#howto" data-mm-anchor>How to Order
@@ -2405,6 +2422,7 @@
           <button class="ftab" data-filter="necklaces">Necklaces</button>
           <button class="ftab" data-filter="earrings">Earrings</button>
           <button class="ftab" data-filter="bracelets">Bracelets</button>
+          <button class="ftab" data-filter="watches">Watches</button>
         </div>
 
         <div class="coll-grid" id="coll-grid-jewelry"></div>
@@ -2515,6 +2533,83 @@
           <div class="assemble-progress">
             <div class="assemble-progress-fill" id="assemble-progress-fill"></div>
           </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ============ WATCHES PAGE VIEW ============ -->
+  <div class="page-view" id="page-watches" hidden>
+
+    <section class="hero" id="hero-watches">
+      <canvas class="hero-canvas" id="hero-canvas-watches"></canvas>
+      <div class="wrap hero-inner">
+        <div class="hero-eyebrow"><span class="dot"></span> Timeless pieces · shipped nationwide</div>
+        <h1 class="reveal in-view">Time, worn<br><em>beautifully.</em></h1>
+        <p class="hero-sub reveal in-view">Slaywithfis watches are picked for the wrist that wants presence without
+          noise — classic dials, gold tones, and finishes that hold up all day.</p>
+        <div class="hero-actions">
+          <a href="#watches-collection" class="btn btn-gold magnetic">View the Watches</a>
+          <a href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!%20I%20want%20to%20order%20a%20watch."
+            target="_blank" rel="noopener" class="btn btn-outline magnetic">Order on WhatsApp</a>
+        </div>
+      </div>
+      <div class="scroll-cue">
+        <div class="line"></div> SCROLL
+      </div>
+    </section>
+
+    <div class="marquee-band">
+      <div class="marquee-track">
+        <span><b>Slaywithfis Watches</b> — timeless dials · gold tones · built to last</span>
+        <span>Classic</span><span>Statement</span><span>Everyday</span><span>@slay_withfis on Instagram</span>
+        <span><b>Slaywithfis Watches</b> — timeless dials · gold tones · built to last</span>
+        <span>Classic</span><span>Statement</span><span>Everyday</span><span>@slay_withfis on Instagram</span>
+      </div>
+    </div>
+
+    <section id="watches-collection">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="eyebrow">The Watch Line</span>
+          <h2>Pieces that keep time and turn heads</h2>
+          <p>Hover a watch to see it worn, or drop it into your bag and check out on WhatsApp — same bag as your jewelry
+            and shades.</p>
+        </div>
+
+        <div class="filter-tabs reveal" data-tabs="watches">
+          <button class="ftab active" data-filter="all">All</button>
+          <button class="ftab" data-filter="watches">Watches</button>
+        </div>
+
+        <div class="coll-grid" id="coll-grid-watches"></div>
+      </div>
+    </section>
+
+    <section class="studio-section" id="watches-studio">
+      <div class="wrap studio-grid">
+        <div class="studio-copy">
+          <span class="eyebrow reveal">The Watch Studio</span>
+          <h2 class="reveal" style="font-size:clamp(30px,4vw,46px);">Worn on the wrist, remembered in the room.</h2>
+          <p class="reveal"
+            style="margin-top:18px;color:var(--ivory-dim);font-size:15.5px;line-height:1.7;max-width:420px;">Every
+            Slaywithfis watch is picked for presence — clean dials, gold tones, and a finish that holds its shine past a
+            long day.</p>
+          <div class="stat-mini reveal">
+            <div><b>Gold</b><span>Tone finishes</span></div>
+            <div><b>Classic</b><span>Dials</span></div>
+            <div><b>1</b><span>DM to reserve</span></div>
+          </div>
+          <a href="https://wa.me/2349024098340?text=Hi%20Slaywithfis!%20I%27d%20like%20to%20order%20a%20watch."
+            target="_blank" rel="noopener" class="btn btn-solid magnetic reveal" style="margin-top:36px;">Shop
+            Watches</a>
+        </div>
+        <div class="studio-canvas-wrap reveal">
+          <canvas id="watches-canvas"></canvas>
+          <div class="studio-hint"><span
+              style="width:5px;height:5px;border-radius:50%;background:var(--pink);display:inline-block;"></span> Scroll
+            to rotate</div>
         </div>
       </div>
     </section>
@@ -2682,7 +2777,7 @@
         <a href="#top" data-page-link="jewelry">Necklaces</a>
         <a href="#top" data-page-link="jewelry">Earrings</a>
         <a href="#top" data-page-link="shades">Shades</a>
-        <a href="#top" data-page-link="shades">Wristwatches</a>
+        <a href="#top" data-page-link="watches">Wristwatches</a>
       </div>
       <div class="foot-col">
         <h4>STUDIO</h4>
@@ -2836,8 +2931,19 @@
       },
 
       {
-        id: 'bracelet-layered', name: 'Small gold ball bracelet', category: 'bracelets', price: 12000, size: 'sm',
-        desc: 'Available separately — ₦3,000 each (1–3); full stack: ₦12,000.',
+        id: 'bracelet-layered', name: 'Gothic tie', category: 'bracelets', price: 15000, size: 'sm',
+        desc: 'A gothic-inspired tie bracelet with a bold and edgy design.',
+        img: 'images/tie_01.jpg',
+      },
+      {
+        id: 'bracelet-layered-02', name: 'Crossed edit Gothic tie', category: 'bracelets', price: 15000, size: 'sm',
+        desc: 'A crossed gothic tie bracelet featuring a unique and edgy design.',
+        img: 'images/tie_02.jpg',
+      },
+
+      {
+        id: 'bracelet-layered', name: 'Small gold ball bracelet', category: 'bracelets', price: 15000, size: 'sm',
+        desc: 'Available separately — ₦4,000 each (1–3); full stack: ₦15,000.',
         img: 'images/bracelet_01.jpg',
       },
 
@@ -2901,22 +3007,27 @@
 
     const PRODUCTS_SHADES = [
       {
-        id: 'shades-aviator', name: 'Aviator Shades', category: 'aviator', price: 20000, size: 'lg',
+        id: 'shades-aviator', name: 'C-inspired luxury dark lens', category: 'aviator', price: 17000, size: 'lg',
         desc: 'Statement frames for indoors and out — the everyday flex.',
-        img: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083',
-        imgWorn: 'https://images.unsplash.com/photo-1621573433675-3f6cd431a255'
+        img: 'images/shade_01.jpg',
       },
       {
-        id: 'shades-cateye', name: 'Cat-Eye Shades', category: 'cateye', price: 22000, size: 'md',
+        id: 'shades-cateye', name: 'Noir muse frame', category: 'cateye', price: 12000, size: 'md',
         desc: 'Sharp corners, softer light. Reads different in every photo.',
-        img: 'https://images.unsplash.com/photo-1577803645773-f96470509666',
-        imgWorn: 'https://images.unsplash.com/photo-1590076215667-875d4ea4e0e8'
+        img: 'images/shade_03.jpg',
       },
       {
-        id: 'shades-round', name: 'Round Retro Shades', category: 'round', price: 19000, size: 'sm',
+        id: 'shades-round', name: 'Honey muse frame', category: 'round', price: 12000, size: 'sm',
         desc: 'Vintage curve, gold-wrapped edge.',
-        img: 'https://images.unsplash.com/photo-1508296695146-257a814070b4',
-        imgWorn: 'https://images.unsplash.com/photo-1473496169904-658ba7c44d8a'
+        img: 'images/shade_04.jpg',
+
+      },
+    ];
+    const PRODUCTS_WATCHES = [
+      {
+        id: 'watches-classic', name: 'Pink pearl watch ', category: 'watches', price: 23000, size: 'lg',
+        desc: 'A timeless design with a sleek, modern finish.',
+        img: 'images/watch_01.jpg',
       },
     ];
 
@@ -2963,6 +3074,7 @@
 
     renderGrid(PRODUCTS_JEWELRY, 'coll-grid-jewelry');
     renderGrid(PRODUCTS_SHADES, 'coll-grid-shades');
+    renderGrid(PRODUCTS_WATCHES, 'coll-grid-watches');
 
     window.addEventListener('load', () => {
       setTimeout(() => document.getElementById('preloader').classList.add('done'), 500);
@@ -3059,14 +3171,22 @@
     });
 
     const pageToggle = document.getElementById('page-toggle');
+    const mmPageToggle = document.getElementById('mm-page-toggle');
     const pageJewelry = document.getElementById('page-jewelry');
     const pageShades = document.getElementById('page-shades');
+    const pageWatches = document.getElementById('page-watches');
     let currentPage = 'jewelry';
+
+    const PAGES = {
+      jewelry: pageJewelry,
+      shades: pageShades,
+      watches: pageWatches
+    };
 
     function goToPage(page, scrollTop) {
       if (page === currentPage) { if (scrollTop) window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
-      const outEl = currentPage === 'jewelry' ? pageJewelry : pageShades;
-      const inEl = page === 'jewelry' ? pageJewelry : pageShades;
+      const outEl = PAGES[currentPage];
+      const inEl = PAGES[page];
 
       outEl.classList.add('page-fade-out');
       setTimeout(() => {
@@ -3081,14 +3201,16 @@
           inEl.classList.remove('page-fade-in');
           window.dispatchEvent(new Event('resize'));
         }, 480);
-        if (scrollTop) window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+        if (scrollTop) window.scrollTo({ top: 0, behavior: 'auto' });
       }, 260);
 
       currentPage = page;
-      pageToggle.classList.toggle('on-shades', page === 'shades');
-      pageToggle.querySelectorAll('a').forEach(a => a.classList.toggle('active', a.dataset.page === page));
-      mmPageToggle.classList.toggle('on-shades', page === 'shades');
-      mmPageToggle.querySelectorAll('a').forEach(a => a.classList.toggle('active', a.dataset.page === page));
+      [pageToggle, mmPageToggle].forEach(t => {
+        if (!t) return;
+        t.classList.toggle('on-shades', page === 'shades');
+        t.classList.toggle('on-watches', page === 'watches');
+        t.querySelectorAll('a').forEach(a => a.classList.toggle('active', a.dataset.page === page));
+      });
     }
 
     pageToggle.querySelectorAll('a').forEach(a => {
@@ -3101,7 +3223,6 @@
     const burgerBtn = document.getElementById('burger-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const mmClose = document.getElementById('mm-close');
-    const mmPageToggle = document.getElementById('mm-page-toggle');
     let menuOpen = false;
 
     function openMobileMenu() {
@@ -3168,6 +3289,7 @@
     const giftWrapCheckbox = document.getElementById('gift-wrap');
 
     const SHADES_IDS = new Set(PRODUCTS_SHADES.map(p => p.id));
+    const WATCHES_IDS = new Set(PRODUCTS_WATCHES.map(p => p.id));
 
     function formatNaira(n) { return '₦' + n.toLocaleString('en-NG'); }
 
@@ -3203,14 +3325,18 @@
       Your bag is empty — add a piece to get started.
     </div>`;
       } else {
-        const jewelryItems = cart.filter(i => !SHADES_IDS.has(i.id));
+        const jewelryItems = cart.filter(i => !SHADES_IDS.has(i.id) && !WATCHES_IDS.has(i.id));
         const shadesItems = cart.filter(i => SHADES_IDS.has(i.id));
+        const watchesItems = cart.filter(i => WATCHES_IDS.has(i.id));
         let html = '';
         if (jewelryItems.length) {
           html += `<div class="cart-group-label">JEWELRY</div>` + jewelryItems.map(renderCartItem).join('');
         }
         if (shadesItems.length) {
           html += `<div class="cart-group-label">SHADES</div>` + shadesItems.map(renderCartItem).join('');
+        }
+        if (watchesItems.length) {
+          html += `<div class="cart-group-label">WATCHES</div>` + watchesItems.map(renderCartItem).join('');
         }
         cartItemsEl.innerHTML = html;
       }
@@ -3220,8 +3346,9 @@
       cartSubtotalEl.textContent = formatNaira(subtotal);
 
       let msg = "Hi Slaywithfis! I'd like to order:\n";
-      const jewelryItems = cart.filter(i => !SHADES_IDS.has(i.id));
+      const jewelryItems = cart.filter(i => !SHADES_IDS.has(i.id) && !WATCHES_IDS.has(i.id));
       const shadesItems = cart.filter(i => SHADES_IDS.has(i.id));
+      const watchesItems = cart.filter(i => WATCHES_IDS.has(i.id));
       if (jewelryItems.length) {
         msg += "\nJewelry:\n";
         jewelryItems.forEach(i => { msg += `- ${i.name} x${i.qty} — ${formatNaira(i.price * i.qty)}\n`; });
@@ -3229,6 +3356,10 @@
       if (shadesItems.length) {
         msg += "\nShades:\n";
         shadesItems.forEach(i => { msg += `- ${i.name} x${i.qty} — ${formatNaira(i.price * i.qty)}\n`; });
+      }
+      if (watchesItems.length) {
+        msg += "\nWatches:\n";
+        watchesItems.forEach(i => { msg += `- ${i.name} x${i.qty} — ${formatNaira(i.price * i.qty)}\n`; });
       }
       if (giftWrapCheckbox.checked && cart.length > 0) msg += `\nGift wrap — ₦2,000\n`;
       msg += `\nSubtotal: ${formatNaira(subtotal)}`;
@@ -3623,6 +3754,65 @@
         renderer.render(scene, camera);
       }
       requestAnimationFrame(animate);
+    })();
+
+    // ============ WATCHES HERO + STUDIO ============
+    makeRingScene('hero-canvas-watches', 2.3);
+
+    (function () {
+      const canvas = document.getElementById('watches-canvas');
+      if (!canvas) return;
+      const wrap = canvas.parentElement;
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+      renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+      camera.position.set(0, 0, 8);
+
+      function resize() {
+        const w = wrap.clientWidth, h = wrap.clientHeight;
+        renderer.setSize(w, h);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      scene.add(new THREE.AmbientLight(0x554128, 1.6));
+      const key = new THREE.PointLight(0xe9d3a3, 3, 30); key.position.set(5, 4, 7); scene.add(key);
+      const fill = new THREE.PointLight(0xe23f8f, 1.4, 30); fill.position.set(-5, -2, 5); scene.add(fill);
+
+      const gold = new THREE.MeshStandardMaterial({ color: 0xc9a769, metalness: 1, roughness: 0.25 });
+      const face = new THREE.MeshPhysicalMaterial({ color: 0xf6eee3, metalness: 0.2, roughness: 0.1, clearcoat: 1 });
+
+      const watch = new THREE.Group();
+      watch.add(new THREE.Mesh(new THREE.CylinderGeometry(1.3, 1.3, 0.22, 48), gold));
+      const dial = new THREE.Mesh(new THREE.CylinderGeometry(1.05, 1.05, 0.24, 48), face);
+      watch.add(dial);
+      const hand = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.9, 0.03), gold);
+      hand.position.set(0, 0.45, 0.13);
+      watch.add(hand);
+      const strap1 = new THREE.Mesh(new THREE.BoxGeometry(0.75, 2.4, 0.12), gold);
+      strap1.position.set(0, 2.2, 0);
+      const strap2 = strap1.clone();
+      strap2.position.set(0, -2.2, 0);
+      watch.add(strap1, strap2);
+
+      watch.rotation.x = 1.1;
+      scene.add(watch);
+
+      let targetX = 0;
+      window.addEventListener('mousemove', e => { targetX = (e.clientX / innerWidth - 0.5); });
+
+      function animate() {
+        requestAnimationFrame(animate);
+        if (document.hidden || currentPage !== 'watches') return;
+        if (!reduced) watch.rotation.y += 0.006;
+        watch.rotation.z += (targetX * 0.2 - watch.rotation.z) * 0.03;
+        renderer.render(scene, camera);
+      }
+      animate();
     })();
   </script>
 </body>
